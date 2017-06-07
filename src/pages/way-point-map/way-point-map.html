@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ Title }}</ion-title>
+    <ion-title>{{ title }}</ion-title>
       
   </ion-navbar>
 
@@ -15,9 +15,9 @@
 
 
 <ion-content padding>
-  <p> Your IP address is: </p>
-  <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+  <p> {{ title }} </p>
+  <sebm-google-map [latitude]="currentLocation.lat" [longitude]="currentLocation.lng" [zoom]="zoom">
+  <sebm-google-map-marker [latitude]="currentLocation.lat" [longitude]="currentLocation.lng"></sebm-google-map-marker>
 </sebm-google-map>
 
 </ion-content>

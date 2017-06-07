@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
-import { SignupPage} from '../pages/signup/signup';
+import { SignupPage } from '../pages/signup/signup';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { SignupPage} from '../pages/signup/signup';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = WayPointMapPage;
 
   pages: Array<{title: string, component: any}>;
 

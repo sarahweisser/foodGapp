@@ -11,18 +11,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-way-point-map',
   templateUrl: 'way-point-map.html',
-    styles: [`
-    .sebm-google-map-container {
-  height: 300px;
-}
-`
-  ]
 })
 export class WayPointMapPage {
 
-  title: string;
-  lat: number;
-  lng: number;
+  title: string = 'Pickup Details';
+  currentLocation: {
+    lat: number;
+    lng: number;
+  };
+  pickupLocation: {
+    lat: number;
+    lng: number;
+  };
+  dropOffLocation: {
+    lat: number;
+    lng: number;
+  };
   zoom: number = 13;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -32,8 +36,8 @@ export class WayPointMapPage {
   getCurrentLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.lat = position.coords.latitude,
-        this.lng = position.coords.longitude
+        this.currentLocation.lat = position.coords.latitude,
+        this.currentLocation.lng = position.coords.longitude
       })
     }
   }

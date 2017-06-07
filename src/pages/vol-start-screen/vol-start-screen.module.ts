@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { VolStartSreenPage } from './vol-start-sreen';
+import { VolStartScreenPage } from './vol-start-screen';
 
 @NgModule({
   declarations: [
-    VolStartSreenPage,
+    VolStartScreenPage,
   ],
   imports: [
-    IonicPageModule.forChild(VolStartSreenPage),
+    IonicPageModule.forChild(VolStartScreenPage),
   ],
   exports: [
-    VolStartSreenPage
+    VolStartScreenPage
   ]
 })
-export class VolStartSreenPageModule {}
+export class VolStartScreenPageModule {}

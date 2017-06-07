@@ -9,16 +9,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  */
 @IonicPage()
 @Component({
-  selector: 'page-vol-start-sreen',
-  templateUrl: 'vol-start-sreen.html',
+  selector: 'page-vol-start-screen',
+  templateUrl: 'vol-start-screen.html',
 })
-export class VolStartSreenPage {
+export class VolStartScreenPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad VolStartSreenPage');
+    console.log('ionViewDidLoad VolStartScreenPage');
   }
 
 }

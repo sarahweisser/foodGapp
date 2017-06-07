@@ -5,7 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
+import { SignupPage} from '../pages/signup/signup';
+
 
 @Component({
   templateUrl: 'app.html'

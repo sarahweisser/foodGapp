@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PendingPage } from '../pending/pending';
 
 /**
  * Generated class for the PostPage page.
@@ -13,6 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'post.html',
 })
 export class PostPage {
+  title:string = 'Post a pickup!';
+  pendingPage = PendingPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -20,5 +23,7 @@ export class PostPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostPage');
   }
+
+
 
 }

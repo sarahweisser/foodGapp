@@ -7,20 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>postPage</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
   <ion-list>
 
     <ion-item>
       <ion-label floating>Quantity</ion-label>
       <ion-input type="quantity"></ion-input>
     </ion-item>
-
 
     <ion-item>
       <ion-label floating>Additional Instructions</ion-label>
@@ -33,7 +33,7 @@
     <ion-label>Perishables</ion-label>
     <ion-checkbox color="dark" checked="true"></ion-checkbox>
   </ion-item>
-  
-  <button ion-button>Post pickup</button>
+
+  <button ion-button block [navPush]="pendingPage">Post pickup</button>
 
 </ion-content>

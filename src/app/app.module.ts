@@ -5,6 +5,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { PendingPage } from '../pages/pending/pending';
+import { PostPage } from '../pages/post/post';
+import { ProgressPage } from '../pages/progress/progress';
+import { SignupPage } from '../pages/signup/signup';
+import { VolStartSreenPage } from '../pages/vol-start-screen/vol-start-screen';
+import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,7 +19,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    PendingPage,
+    PostPage,
+    ProgressPage,
+    SignupPage,
+    VolStartSreenPage,
+    WayPointMapPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +35,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    PendingPage,
+    PostPage,
+    ProgressPage,
+    SignupPage,
+    VolStartSreenPage,
+    WayPointMapPage
   ],
   providers: [
     StatusBar,

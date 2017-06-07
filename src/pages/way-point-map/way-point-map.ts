@@ -28,8 +28,8 @@ export class WayPointMapPage {
   getCurrentLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.currentLocation.lat = position.coords.latitude,
-        this.currentLocation.lng = position.coords.longitude
+        //this.currentLocation.lat = position.coords.latitude,
+        //this.currentLocation.lng = position.coords.longitude
       })
     }
   }

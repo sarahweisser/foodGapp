@@ -15,18 +15,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class WayPointMapPage {
 
   title: string = 'Pickup Details';
-  currentLocation: {
-    lat: number;
-    lng: number;
-  };
-  pickupLocation: {
-    lat: number;
-    lng: number;
-  };
-  dropOffLocation: {
-    lat: number;
-    lng: number;
-  };
+  lat: number;
+  currentLocation: Object;
+  pickupLocation: Object;
+  dropOffLocation: Object;
   zoom: number = 13;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

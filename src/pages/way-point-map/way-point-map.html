@@ -7,12 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>wayPointMap</ion-title>
+    <ion-title>{{ Title }}</ion-title>
+      
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <p> Your IP address is: </p>
+  <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+</sebm-google-map>
 
 </ion-content>

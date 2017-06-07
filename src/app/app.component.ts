@@ -5,7 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { SignupPage} from '../pages/signup/signup';
+import { PendingPage } from '../pages/pending/pending';
+import { PostPage } from '../pages/post/post';
+import { ProgressPage } from '../pages/progress/progress';
+import { SignupPage } from '../pages/signup/signup';
+import { VolStartScreenPage } from '../pages/vol-start-screen/vol-start-screen';
+import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 
 @Component({
   templateUrl: 'app.html'

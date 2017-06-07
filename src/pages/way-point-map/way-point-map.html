@@ -7,12 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>wayPointMap</ion-title>
+    <ion-title>{{ title }}</ion-title>
+      
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <p> {{ title }} </p>
+  <sebm-google-map [latitude]="currentLocation.lat" [longitude]="currentLocation.lng" [zoom]="zoom">
+  <sebm-google-map-marker [latitude]="currentLocation.lat" [longitude]="currentLocation.lng"></sebm-google-map-marker>
+</sebm-google-map>
 
 </ion-content>

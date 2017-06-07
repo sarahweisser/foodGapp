@@ -9,7 +9,7 @@ import { PendingPage } from '../pages/pending/pending';
 import { PostPage } from '../pages/post/post';
 import { ProgressPage } from '../pages/progress/progress';
 import { SignupPage } from '../pages/signup/signup';
-import { VolStartSreenPage } from '../pages/vol-start-screen/vol-start-screen';
+import { VolStartScreenPage } from '../pages/vol-start-screen/vol-start-screen';
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -24,7 +24,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PostPage,
     ProgressPage,
     SignupPage,
-    VolStartSreenPage,
+    VolStartScreenPage,
     WayPointMapPage
   ],
   imports: [
@@ -40,7 +40,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PostPage,
     ProgressPage,
     SignupPage,
-    VolStartSreenPage,
+    VolStartScreenPage,
     WayPointMapPage
   ],
   providers: [

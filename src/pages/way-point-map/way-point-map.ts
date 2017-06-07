@@ -14,11 +14,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class WayPointMapPage {
 
+  title: string = 'Pickup Details';
+  lat: number;
+  currentLocation: Object;
+  pickupLocation: Object;
+  dropOffLocation: Object;
+  zoom: number = 13;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.getCurrentLocation();
+  }
+
+  getCurrentLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.currentLocation.lat = position.coords.latitude,
+        this.currentLocation.lng = position.coords.longitude
+      })
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WayPointMapPage');
   }
+
+
 
 }

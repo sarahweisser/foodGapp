@@ -15,9 +15,18 @@
 
 
 <ion-content padding>
-  <p> {{ title }} </p>
-  <!--<sebm-google-map [latitude]="currentLocation.lat" [longitude]="currentLocation.lng" [zoom]="zoom">
-  <sebm-google-map-marker [latitude]="currentLocation.lat" [longitude]="currentLocation.lng"></sebm-google-map-marker>
-</sebm-google-map>-->
+      <ion-card>
+        <ion-card-content>
+            <div #directionsPanel></div>
+        </ion-card-content>
+    </ion-card>
+     
+    <div #map id="map"></div> 
+
+  <p>Payload: </p>
+  <p>Pickup Address: </p>
+  <p>Pickup Phone: </p>
+
+  <button ion-button (click)='confirm();'>{{ buttonText }}</button>
 
 </ion-content>

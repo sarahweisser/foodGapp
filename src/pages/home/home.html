@@ -3,16 +3,28 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Sign Up</ion-title>
+    <ion-title>Sign In</ion-title>
   </ion-navbar>
 </ion-header>
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <ion-content padding>
-  <h3>Sign Up Now</h3>
+  <h3>Sign In</h3>
+<section>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <div>
+    <p>
+      Not a user   <a [navPush]="signupPage">Sign Up</a>
+    </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  </div>
+  <form>
+  <label>Email:</label>
+<input type="email"><br /><br />
+  <label>Password:</label>
+  <input type="password" /><br /><br />
+</form>
+  <div>
+    <button ion-button secondary menuToggle>Sign In</button>
+  </div>
+</section>
 </ion-content>

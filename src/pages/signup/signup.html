@@ -5,14 +5,34 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>signup</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sign Up</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <ion-content padding>
-
+  <h3>Sign Up Now</h3>
+<section>
+  <form>
+  First Name:
+  <input type="text"><br /><br />
+  Last Name:
+  <input type="text" /><br />
+  <p>Email:
+<input type="email" name="email" ng-model="email" required>
+</p>
+  Phone Number:
+  <input type="text" /><br /><br />
+  Password:
+  <input type="password" /><br /><br />
+  Retype Password:
+  <input type="password" />
+</form>
+  <div>
+    <button ion-button secondary menuToggle>Sign Up</button>
+  </div>
+</section>
 </ion-content>

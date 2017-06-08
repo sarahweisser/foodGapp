@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-
 import { PendingPage } from '../pages/pending/pending';
 import { PostPage } from '../pages/post/post';
 import { ProgressPage } from '../pages/progress/progress';
@@ -19,7 +18,7 @@ import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = WayPointMapPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 

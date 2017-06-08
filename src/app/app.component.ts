@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignupPage} from '../pages/signup/signup';
+import{VolStartScreenPage} from '../pages/vol-start-screen/vol-start-screen';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +14,7 @@ import { SignupPage} from '../pages/signup/signup';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = VolStartScreenPage;
 
   pages: Array<{title: string, component: any}>;
 

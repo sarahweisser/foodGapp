@@ -1,29 +1,24 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PendingPage } from '../pending/pending';
 
 /**
- * Generated class for the PostPage page.
+ * Generated class for the SignupTypePage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @IonicPage()
 @Component({
-  selector: 'page-post',
-  templateUrl: 'post.html',
+  selector: 'page-signup-type',
+  templateUrl: 'signup-type.html',
 })
-export class PostPage {
-  title:string = 'Post a pickup!';
-  pendingPage = PendingPage;
+export class SignupTypePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PostPage');
+    console.log('ionViewDidLoad SignupTypePage');
   }
-
-
 
 }

@@ -7,16 +7,15 @@ import { Http } from '@angular/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { NgZone } from '@angular/core';
 import 'rxjs/add/operator/map';
+// import {Page} from 'ionic/ionic';
+import { DataService } from '../../app/services/data.service';
 
-// import {
-//   GoogleMap,
-//   GoogleMaps,
-//   GoogleMapsEvent,
-//   LatLng,
-//   MarkerOptions,
-//   CameraPosition,
-//   Marker
-// } from '@ionic-native/google-maps';
+export class TestPage {
+  constructor(data: DataService) {
+    data.retrieveData()
+  }
+}
+
 
 declare var google;
 
@@ -24,6 +23,7 @@ declare var google;
 @IonicPage()
 
 @Component({
+  providers: [DataService],
   selector: 'page-vol-start-screen',
   templateUrl: 'vol-start-screen.html',
 })
@@ -41,12 +41,14 @@ export class VolStartScreenPage {
     public modalCtrl: ModalController,
     public popoverCtrl: PopoverController,
     public events: Events,
+    public data: DataService,
     private deeplinks: Deeplinks) {
     this.infoWindows = [];
   }
 
   ionViewWillEnter() {
     this.displayGoogleMap();
+
   }
 
 
@@ -90,6 +92,7 @@ export class VolStartScreenPage {
   }
 
   getMarkers() {
+
     this.http.get('../../assets/data/markers.json')
       .map((res) => res.json())
       .subscribe(data => {
@@ -108,13 +111,13 @@ export class VolStartScreenPage {
     // });
     marker.addListener('click', () => {
 
-      let popover = this.popoverCtrl.create(PopupInfoWindowPage, marker);
+      let popover = this.popoverCtrl.create(PopupInfoWindowPage, {marker});
       popover.present({
 
       });
+     // console.log(marker.title);
 
-
-       this.events.publish('user:created', marker.title);
+     // this.events.publish('user:created',marker.title);
 
       // this.navCtrl.push(PopupInfoWindowPage, {
       //   param1: 'John', param2: 'Johnson'
@@ -137,6 +140,8 @@ export class VolStartScreenPage {
       var restaurantMarkerClick = new google.maps.Marker({
         position: position,
         title: marker.name,
+        quantity: marker.quantity,
+        perishable: marker.perishable,
         animation: google.maps.Animation.DROP
       });
       restaurantMarkerClick.setMap(this.map);

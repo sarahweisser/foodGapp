@@ -3,32 +3,28 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Sign Up</ion-title>
+    <ion-title>Sign In</ion-title>
   </ion-navbar>
 </ion-header>
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <ion-content padding>
-  <h3>Sign Up Now</h3>
+  <h3>Sign In</h3>
 <section>
-  <p>
-    If you are already a user <a href="../pages/home/home.html">Sign In</a> here.
-  </p>
-<form>
-  First Name:
-  <input type="text"><br />
-  Last Name:
-  <input type="text" /><br />
-  Email:
-  <input type="text" /><br />
-  Phone Number:
-  <input type="text" /><br />
-  Password:
-  <input type="password" /><br />
-  Retype Password:
-  <input type="password" />
+
+  <div>
+    <p>
+      Not a user   <a [navPush]="signupPage">Sign Up</a>
+    </p>
+
+  </div>
+  <form>
+  <label>Email:</label>
+<input type="email"><br /><br />
+  <label>Password:</label>
+  <input type="password" /><br /><br />
 </form>
   <div>
-    <button ion-button secondary menuToggle>Sign Up</button>
+    <button ion-button secondary menuToggle>Sign In</button>
   </div>
 </section>
 </ion-content>

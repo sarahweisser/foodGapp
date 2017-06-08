@@ -16,16 +16,18 @@
 
 <ion-content padding>
       <ion-card>
-        <ion-card-content>
-            <div #directionsPanel></div>
-        </ion-card-content>
     </ion-card>
      
     <div #map id="map"></div> 
 
+  <ion-card-content>
+    <div [hidden]="!confirmed" #directionsPanel></div>
+  </ion-card-content>
+<div [hidden]="confirmed" id="pickupDetails">
   <p>Payload: </p>
   <p>Pickup Address: </p>
   <p>Pickup Phone: </p>
+</div>
 
   <button ion-button (click)='confirm();'>{{ buttonText }}</button>
 

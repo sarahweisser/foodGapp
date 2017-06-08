@@ -31,11 +31,13 @@ export class WayPointMapPage {
   loader: any;
   lat: number;
   lng: number;
+  confirmed: boolean = false;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public loadingCtrl: LoadingController) {
-  
+
+
 
   }
 
@@ -47,14 +49,18 @@ export class WayPointMapPage {
   }
 
   confirm() {
-    this.navCtrl.push(WayPointMapPage, {
-      title: 'In Progress',
-      buttonText: 'Complete'
-    });
+    this.confirmed = true;
+    this.buttonText = 'Dropoff Complete!'
   }
 
   loadMap() {
-    let LatLng = new google.maps.LatLng(-34.9290, 138.6010);
+    let LatLng = new google.maps.LatLng(39.7472871, -75.54704149999999);
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+      })
+    }
 
     let mapOptions = {
       center: LatLng,
@@ -73,8 +79,13 @@ export class WayPointMapPage {
       directionsDisplay.setPanel(this.directionsPanel.nativeElement);
 
       directionsService.route({
-        origin: 'adelaide',
-        destination: 'adelaide oval',
+        origin: new google.maps.LatLng(39.7472871, -75.54704149999999),
+        destination: new google.maps.LatLng(39.7472879, -75.3),
+        waypoints: [{ 
+          location: new google.maps.LatLng(39.7472871, -75.4),
+          stopover: true
+          
+        }],
         travelMode: google.maps.TravelMode['DRIVING']
       }, (res, status) => {
           if (status == google.maps.DirectionsStatus.OK) {

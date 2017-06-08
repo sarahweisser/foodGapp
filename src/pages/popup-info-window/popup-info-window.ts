@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { WayPointMapPage } from '../way-point-map/way-point-map';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the PopupInfoWindowPage page.
@@ -13,24 +15,34 @@ import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
   templateUrl: 'popup-info-window.html',
 })
 export class PopupInfoWindowPage {
-  @ViewChild('map') mapContainer: any;
+  @ViewChild('button') volButton: any;
   title: string;
   quantity: string;
   perishable: string;
-
   button: any;
+  marker: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events) {
     console.log(navParams);
+    this.marker = navParams.data.marker;
     this.title = navParams.data.marker.title;
     this.quantity = navParams.data.marker.quantity;
     this.perishable = navParams.data.marker.perishable;
-    this.button = '<button ion-button id="volunteerButton">Volunteer!</button>';
+
+    //this.button = '<button ion-button id="volunteerButton">Volunteer!</button>';
   }
 
   ionViewDidLoad() {
+    this.buttons();
   }
 
+  buttons() {
+    document.getElementById('button').innerHTML = '<button ion-button (click)="pushPage()" id="volunteerButton">Volunteer!</button>';
+  }
+  
+  pushPage() {
+    this.navCtrl.push(HomePage, this.marker);
+  }
 
 
 

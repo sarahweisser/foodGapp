@@ -110,14 +110,16 @@ export class VolStartScreenPage {
     //   content: infoWindowContent
     // });
     marker.addListener('click', () => {
+     var  position =  new google.maps.LatLng(marker.latitude, marker.longitude);
 
-      let popover = this.popoverCtrl.create(PopupInfoWindowPage, {marker});
+     
+      let popover = this.popoverCtrl.create(PopupInfoWindowPage, { marker:marker,position:position });
       popover.present({
 
       });
-     // console.log(marker.title);
+      // console.log(marker.title);
 
-     // this.events.publish('user:created',marker.title);
+      // this.events.publish('user:created',marker.title);
 
       // this.navCtrl.push(PopupInfoWindowPage, {
       //   param1: 'John', param2: 'Johnson'

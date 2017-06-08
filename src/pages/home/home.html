@@ -3,12 +3,15 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Sign In</ion-title>
+    <ion-title>FoodGapp</ion-title>
   </ion-navbar>
 </ion-header>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <ion-content padding>
-  <h3>Sign In</h3>
+  <div padding align="center">
+    <h3>Sign In</h3>
+  </div>
+
 <section>
 
   <div>
@@ -23,11 +26,11 @@
     <ion-input type="email" placeholder="Email" name="email" ng-required="true"></ion-input>
   </ion-item>
   <ion-item>
-      <ion-input type="password" placeholder="passwrod" name="password" ng-required="true"></ion-input>
+      <ion-input type="password" placeholder="Password" name="password" ng-required="true"></ion-input>
   </ion-item>
 </ion-list>
 
-  <div>
+  <div align="center">
     <button ion-button [navPush]="signupTypePage">Sign In</button>
   </div>
 </section>

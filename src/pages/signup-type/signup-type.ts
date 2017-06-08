@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { PostPage } from '../post/post';
 
 /**
  * Generated class for the SignupTypePage page.
@@ -14,6 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'signup-type.html',
 })
 export class SignupTypePage {
+
+  postPage = PostPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

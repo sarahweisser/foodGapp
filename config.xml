@@ -88,4 +88,10 @@
         <variable name="API_KEY_FOR_IOS" value="AIzaSyAe7u6-rTZ3TLpwkroghe_LQSVRLfKzzoI" />
     </plugin>
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3" />
+    <plugin name="ionic-plugin-deeplinks" spec="^1.0.15">
+        <variable name="URL_SCHEME" value="myapp" />
+        <variable name="DEEPLINK_SCHEME" value="https" />
+        <variable name="DEEPLINK_HOST" value="example.com" />
+        <variable name="ANDROID_PATH_PREFIX" value="/" />
+    </plugin>
 </widget>

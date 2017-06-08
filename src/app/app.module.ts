@@ -15,7 +15,9 @@ import { SignupPage } from '../pages/signup/signup';
 import { Geolocation } from '@ionic-native/geolocation';
 import { VolStartScreenPage } from '../pages/vol-start-screen/vol-start-screen';
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
+import { PopupInfoWindowPage } from '../pages/popup-info-window/popup-info-window';
 import { GoogleMaps } from '@ionic-native/google-maps';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,6 +32,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProgressPage,
     SignupPage,
     VolStartScreenPage,
+    PopupInfoWindowPage,
     WayPointMapPage
   ],
   imports: [
@@ -47,6 +50,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProgressPage,
     SignupPage,
     VolStartScreenPage,
+    PopupInfoWindowPage,
     WayPointMapPage
   ],
   providers: [
@@ -55,7 +59,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GoogleMaps,
     SplashScreen,
     Deeplinks,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

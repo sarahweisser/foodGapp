@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, PopoverController, Events } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HomePage } from '../home/home';
+import { PopupInfoWindowPage } from '../popup-info-window/popup-info-window';
 import { Http } from '@angular/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
+import { NgZone } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 // import {
@@ -35,6 +37,10 @@ export class VolStartScreenPage {
   constructor(public navCtrl: NavController,
     private http: Http,
     public geolocation: Geolocation,
+    public ngZone: NgZone,
+    public modalCtrl: ModalController,
+    public popoverCtrl: PopoverController,
+    public events: Events,
     private deeplinks: Deeplinks) {
     this.infoWindows = [];
   }
@@ -45,18 +51,10 @@ export class VolStartScreenPage {
 
 
   displayGoogleMap() {
-
-
-
     this.geolocation.getCurrentPosition().then(position => {
 
       // let zipCode = new google.maps.LatLng(39.749391, -75.561390);
       let home = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-
-      // console.log(latLng);
-      // console.log(home);
-      // console.log("above");
       let mapOptions = {
         center: home,
         zoom: 14,
@@ -69,27 +67,11 @@ export class VolStartScreenPage {
         this.getMarkers();
       }
 
-      setTimeout(markers.bind(this), 3000);
+      setTimeout(markers.bind(this), 1000);
 
     }).catch((error) => {
       console.log('Error getting location', error);
     });
-
-
-
-
-this.deeplinks.routeWithNavController(this.navCtrl, {
-  '/home': HomePage
-}).subscribe((match) => {
-    // match.$route - the route we matched, which is the matched entry from the arguments to route()
-    // match.$args - the args passed in the link
-    // match.$link - the full link data
-    console.log('Successfully matched route', match);
-  }, (nomatch) => {
-    // nomatch.$link - the full link data
-    console.error('Got a deeplink that didn\'t match', nomatch);
-  });
-
 
 
 
@@ -119,17 +101,31 @@ this.deeplinks.routeWithNavController(this.navCtrl, {
 
   markerInfo(marker) {
 
-    var infoWindowContent = '<div id="restaurantMapDiv"><h1 id="header" class="header">' + marker.title + '</h1></div>' +
-      '<a href="https://www.google.com">Hello</a><button ion-button round>Click me </button>';
-    var infoWindow = new google.maps.InfoWindow({
-      content: infoWindowContent
-    });
+    // var infoWindowContent = '<div id="restaurantMapDiv"><h1 id="header" class="header">' + marker.title + '</h1></div>' +
+    //   '<a href="https://www.google.com">Hello</a><button ion-button round>Click me </button>';
+    // var infoWindow = new google.maps.InfoWindow({
+    //   content: infoWindowContent
+    // });
     marker.addListener('click', () => {
-      this.navCtrl.push('HomePage')
-      this.closeAllInfoWindows();
-      infoWindow.open(this.map, marker);
+
+      let popover = this.popoverCtrl.create(PopupInfoWindowPage, marker);
+      popover.present({
+
+      });
+
+
+       this.events.publish('user:created', marker.title);
+
+      // this.navCtrl.push(PopupInfoWindowPage, {
+      //   param1: 'John', param2: 'Johnson'
+      // });
+      // console.log(marker.title);
+
+      // this.navCtrl.push(HomePage)
+      //this.closeAllInfoWindows();
+      // infoWindow.open(this.map, marker);
     });
-    this.infoWindows.push(infoWindow);
+    // this.infoWindows.push(infoWindow);
   }
 
 

@@ -16,23 +16,14 @@
 <ion-content padding>
   <h3>Sign Up Now</h3>
 <section>
-  <form>
-  First Name:
-  <input type="text"><br /><br />
-  Last Name:
-  <input type="text" /><br />
-  <p>Email:
-<input type="email" name="email" ng-model="email" required>
-</p>
-  Phone Number:
-  <input type="text" /><br /><br />
-  Password:
-  <input type="password" /><br /><br />
-  Retype Password:
-  <input type="password" />
+  <form novalidate>
+  <input type="text" placeholder="first name" name="fname" ng-required="true"><br />
+  <input type="text" placeholder="last name" name="lname" ng-required="true"><br />
+  <input type="email" placeholder="Email" name="email" ng-required="true"><br />
+  <input type="phone" placeholder="phone" name="phone" ng-required="true"><br />
+  <input type="password" placeholder="passwrod" name="password" ng-required="true"><br />
+  <input type="password" placeholder="retype password" name="password2" ng-required="true"><br />
+  <input type="submit" value="send" />
 </form>
-  <div>
-    <button ion-button secondary menuToggle>Sign Up</button>
-  </div>
 </section>
 </ion-content>

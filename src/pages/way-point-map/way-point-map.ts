@@ -34,8 +34,8 @@ export class WayPointMapPage {
   lng: number;
   confirmed: boolean = false;
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
               public loadingCtrl: LoadingController,
               private launchNavigator: LaunchNavigator) {
 
@@ -60,7 +60,7 @@ this.launchNavigator.navigate('Toronto, ON', options)
     success => console.log('Launched navigator'),
     error => console.log('Error launching navigator', error)
   );
-    
+
     // this.confirmed = true;
     // this.buttonText = 'Dropoff Complete!'
   }
@@ -93,10 +93,10 @@ this.launchNavigator.navigate('Toronto, ON', options)
       directionsService.route({
         origin: new google.maps.LatLng(39.7472871, -75.54704149999999),
         destination: new google.maps.LatLng(39.7472879, -75.3),
-        waypoints: [{ 
+        waypoints: [{
           location: new google.maps.LatLng(39.7472871, -75.4),
           stopover: true
-          
+
         }],
         travelMode: google.maps.TravelMode['DRIVING']
       }, (res, status) => {
@@ -109,7 +109,7 @@ this.launchNavigator.navigate('Toronto, ON', options)
       })
   }
 
-  
+
 
   ionViewDidLoad() {
     this.loader = this.getLoader();

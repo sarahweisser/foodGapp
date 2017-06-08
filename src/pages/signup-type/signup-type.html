@@ -23,20 +23,20 @@
   <ion-list radio-group>
     <ion-item>
       <ion-label>Volunteer</ion-label>
-      <ion-radio value="volunteer" checked></ion-radio>
+      <ion-radio (click)="volunteerTrue()" checked></ion-radio>
     </ion-item>
     <ion-item>
       <ion-label>Donate</ion-label>
-      <ion-radio value="donate"></ion-radio>
+      <ion-radio (click)="donateTrue()"></ion-radio>
     </ion-item>
     <ion-item>
-      <ion-label>Accept Donation</ion-label>
-      <ion-radio value="enemies" [disabled]="isDisabled"></ion-radio>
+      <ion-label>Food Relief Partner</ion-label>
+      <ion-radio (click)="partnerTrue()"></ion-radio>
     </ion-item>
   </ion-list>
 </form>
   <div padding align="center">
-    <button ion-button [navPush]="postPage">Continue</button>
+    <button ion-button (click)="continue()">Continue</button>
   </div>
 
 </ion-content>

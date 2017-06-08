@@ -16,14 +16,30 @@
 <ion-content padding>
   <h3>Sign Up Now</h3>
 <section>
-  <form novalidate>
-  <input type="text" placeholder="first name" name="fname" ng-required="true"><br />
-  <input type="text" placeholder="last name" name="lname" ng-required="true"><br />
-  <input type="email" placeholder="Email" name="email" ng-required="true"><br />
-  <input type="phone" placeholder="phone" name="phone" ng-required="true"><br />
-  <input type="password" placeholder="passwrod" name="password" ng-required="true"><br />
-  <input type="password" placeholder="retype password" name="password2" ng-required="true"><br />
-  <input type="submit" value="send" />
+  <form novalidate="true">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" class="name" placeholder="first name" name="fname" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="last name" name="lname" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="email" placeholder="Email" name="email" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="phone" placeholder="phone" name="phone" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="passwrod" name="password" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="retype password" name="password2" ng-required="true"></ion-input>
+      </ion-item>
+  </ion-list>
 </form>
+<div padding>
+  <button ion-button [navPush]="signupTypePage">Sign In</button>
+</div>
 </section>
 </ion-content>

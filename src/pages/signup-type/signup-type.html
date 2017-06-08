@@ -5,14 +5,38 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>signup-type</ion-title>
+  <ion-navbar color="greener">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Let's Get Started</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+
+  <div padding>
+    <h6>What Do You Want To Do</h6>
+  </div>
+  <form>
+  <ion-list radio-group>
+    <ion-item>
+      <ion-label>Volunteer</ion-label>
+      <ion-radio value="volunteer" checked></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Donate</ion-label>
+      <ion-radio value="donate"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Accept Donation</ion-label>
+      <ion-radio value="enemies" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+  </ion-list>
+</form>
+  <div padding align="center">
+    <button ion-button [navPush]="PostPage">Continue</button>
+  </div>
 
 </ion-content>

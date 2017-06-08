@@ -11,6 +11,7 @@ import { ProgressPage } from '../pages/progress/progress';
 import { SignupPage } from '../pages/signup/signup';
 import { VolStartScreenPage } from '../pages/vol-start-screen/vol-start-screen';
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
+import { SignupTypePage } from '../pages/signup-type/signup-type';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +19,7 @@ import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = SignupTypePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -27,8 +28,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Home', component: SignupTypePage },
+      { title: 'Sign In', component: HomePage }
     ];
 
   }

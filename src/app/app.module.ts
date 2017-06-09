@@ -6,6 +6,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { PendingPage } from '../pages/pending/pending';
+import { WaitingPage } from '../pages/waiting/waiting';
+import { DeliveredPage } from '../pages/delivered/delivered';
+import { CompletePage } from '../pages/complete/complete';
 import { PostPage } from '../pages/post/post';
 import { ProgressPage } from '../pages/progress/progress';
 import { SignupPage } from '../pages/signup/signup';
@@ -24,6 +27,9 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     HomePage,
     ListPage,
     PendingPage,
+    WaitingPage,
+    CompletePage,
+    DeliveredPage,
     PostPage,
     ProgressPage,
     SignupPage,
@@ -44,6 +50,9 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     HomePage,
     ListPage,
     PendingPage,
+    WaitingPage,
+    CompletePage,
+    DeliveredPage,
     PostPage,
     ProgressPage,
     SignupPage,

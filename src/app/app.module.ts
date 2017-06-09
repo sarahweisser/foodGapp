@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -15,9 +16,8 @@ import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { AgmCoreModule } from 'angular2-google-maps/core';
-
 @NgModule({
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [
     MyApp,
     HomePage,
@@ -32,9 +32,6 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAe7u6-rTZ3TLpwkroghe_LQSVRLfKzzoI'
-    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,10 +43,10 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     ProgressPage,
     SignupPage,
     VolStartScreenPage,
-
     WayPointMapPage
   ],
   providers: [
+    LaunchNavigator,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

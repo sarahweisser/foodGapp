@@ -18,7 +18,7 @@ import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = WayPointMapPage;
 
   pages: Array<{title: string, component: any}>;
 

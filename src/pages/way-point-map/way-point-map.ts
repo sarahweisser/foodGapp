@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Location } from '../../shared/location';
+import { SignupPage } from '../signup/signup';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
 declare var google: any;
@@ -51,18 +52,20 @@ export class WayPointMapPage {
   }
 
   confirm() {
+    this.navCtrl.push(SignupPage);
     let options: LaunchNavigatorOptions = {
-  start: 'London, ON'
-};
-
-this.launchNavigator.navigate('Toronto, ON', options)
-  .then(
-    success => console.log('Launched navigator'),
-    error => console.log('Error launching navigator', error)
-  );
+      start: 'London, ON'
+    };
     
-    // this.confirmed = true;
-    // this.buttonText = 'Dropoff Complete!'
+    this.launchNavigator.navigate('Toronto, ON', options)
+      .then(
+        success => console.log('Launched navigator'),
+        error => console.log('Error launching navigator', error)
+      );
+      
+        
+        // this.confirmed = true;
+        // this.buttonText = 'Dropoff Complete!'
   }
 
   loadMap() {
@@ -109,13 +112,11 @@ this.launchNavigator.navigate('Toronto, ON', options)
       })
   }
 
-  
-
   ionViewDidLoad() {
     this.loader = this.getLoader();
     this.loader.present();
 
     this.loadMap();
     this.startNavigating();
-}
   }
+}

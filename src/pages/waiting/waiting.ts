@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { SignupTypePage } from '../signup-type/signup-type';
 /**
- * Generated class for the CompletePage page.
+ * Generated class for the PendingPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @IonicPage()
 @Component({
-  selector: 'page-complete',
-  templateUrl: 'complete.html',
+  selector: 'page-waiting',
+  templateUrl: 'waiting.html',
 })
-export class CompletePage {
+export class WaitingPage {
   
   signupTypePage = SignupTypePage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -22,7 +22,7 @@ export class CompletePage {
     this.navCtrl.popToRoot();
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompletePage');
+    console.log('ionViewDidLoad WaitingPage');
   }
 
 }

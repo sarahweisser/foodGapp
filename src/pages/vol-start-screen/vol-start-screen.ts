@@ -48,23 +48,23 @@ export class VolStartScreenPage {
 
   ionViewWillEnter() {
     this.displayGoogleMap();
-
   }
 
 
   displayGoogleMap() {
     this.geolocation.getCurrentPosition().then(position => {
 
-      // let zipCode = new google.maps.LatLng(39.749391, -75.561390);
-      let home = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      let zipCode = new google.maps.LatLng(39.749391, -75.561390);
+      // let home = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
-        center: home,
+        center: zipCode,
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
+      } 
+
       this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
 
-      this.myMarker(home);
+      this.myMarker(zipCode);
       const markers = function () {
         this.getMarkers();
       }
@@ -109,11 +109,15 @@ export class VolStartScreenPage {
     // var infoWindow = new google.maps.InfoWindow({
     //   content: infoWindowContent
     // });
+    //console.log("asdasdhgfhdfgjdfj "+marker.latitude);
     marker.addListener('click', () => {
-     var  position =  new google.maps.LatLng(marker.latitude, marker.longitude);
+      var position = new google.maps.LatLng(marker.latitude, marker.longitude);
+    
+     console.log("asdfasdfas "+position);
+     console.log("iknew it"+ marker.latitude);
 
-     
-      let popover = this.popoverCtrl.create(PopupInfoWindowPage, { marker:marker,position:position });
+
+      let popover = this.popoverCtrl.create(PopupInfoWindowPage, { marker: marker, position: position });
       popover.present({
 
       });
@@ -144,6 +148,8 @@ export class VolStartScreenPage {
         title: marker.name,
         quantity: marker.quantity,
         perishable: marker.perishable,
+        latitude:marker.latitude,
+        longitude:marker.longitude,
         animation: google.maps.Animation.DROP
       });
       restaurantMarkerClick.setMap(this.map);
@@ -152,9 +158,5 @@ export class VolStartScreenPage {
   }
 
 
-  closeAllInfoWindows() {
-    for (let window of this.infoWindows) {
-      window.close();
-    }
-  }
+ 
 }

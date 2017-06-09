@@ -21,15 +21,16 @@ export class PopupInfoWindowPage {
   perishable: string;
   button: any;
   marker: any;
+  location:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events) {
-    console.log(navParams);
+//I believe position get the LatLng, but if not, you can use
     this.marker = navParams.data.marker;
     this.title = navParams.data.marker.title;
     this.quantity = navParams.data.marker.quantity;
     this.perishable = navParams.data.marker.perishable;
+    this.location = this.navParams.get('position');
 
-    //this.button = '<button ion-button id="volunteerButton">Volunteer!</button>';
   }
 
   ionViewDidLoad() {
@@ -37,12 +38,18 @@ export class PopupInfoWindowPage {
   }
 
   buttons() {
-    document.getElementById('button').innerHTML = '<button ion-button (click)="pushPage()" id="volunteerButton">Volunteer!</button>';
+    // document.getElementById('button').innerHTML = '<button ion-button (click)="pushPage()" id="volunteerButton">Volunteer!</button>';
   }
-  
+
   pushPage() {
-    this.navCtrl.push(HomePage, this.marker);
+    this.navCtrl.push(WayPointMapPage, {
+      title:this.title,
+      quantity:this.quantity,
+      perishable:this.perishable,
+    location:this.location});
   }
+
+
 
 
 

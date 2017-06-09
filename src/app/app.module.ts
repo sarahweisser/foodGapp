@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
 
 import { MyApp } from './app.component';
@@ -64,6 +65,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     GoogleMaps,
     SplashScreen,
     Deeplinks,
+    LaunchNavigator,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

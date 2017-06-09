@@ -49,8 +49,8 @@ export class VolStartScreenPage {
   }
 
   ionViewWillEnter() {
-    // this.loader = this.getLoader();
-    // this.loader.present();
+    this.loader = this.getLoader();
+    this.loader.present();
     this.displayGoogleMap();
 
 
@@ -66,7 +66,7 @@ getLoader() {
 
   displayGoogleMap() {
     this.geolocation.getCurrentPosition().then(position => {
-
+ this.loader.dismiss();
       let zipCode = new google.maps.LatLng(39.749391, -75.561390);
       // let home = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
@@ -78,12 +78,12 @@ getLoader() {
 
       this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
       this.myMarker(zipCode);
-      // this.loader.dismiss();
+     
       const markers = function () {
         this.getMarkers();
-        //  this.loader.dismiss();
+         this.loader.dismiss();
       }
-      setTimeout(markers.bind(this), 3000);
+      setTimeout(markers.bind(this), 1000);
 
     }).catch((error) => {
       console.log('Error getting location', error);
@@ -95,12 +95,11 @@ getLoader() {
   }
   myMarker(position) {
     //var position = new google.maps.LatLng(marker.latitude, marker.longitude);
+     var image = '/assets/img/Untitled-2.gif';
     var currentPositionIcon = new google.maps.Marker({
+      optimized:false,
       position: position,
-      icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-        new google.maps.Size(22, 22),
-        new google.maps.Point(0, 18),
-        new google.maps.Point(11, 11))
+      icon: image
     });
     currentPositionIcon.setMap(this.map);
 

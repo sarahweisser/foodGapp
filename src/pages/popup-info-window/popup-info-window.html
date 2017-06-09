@@ -6,14 +6,14 @@
 -->
 <ion-header>
 
-
+<div id ="title">{{title}}</div>
 </ion-header>
 
 
-<ion-content padding>
-<div id ="title">{{title}}</div>
-<div id ="quantity">{{quantity}}</div>
-<div id ="perishable">{{perishable}}</div>
+<ion-content id="popupWindow">
+<!--<div id ="title">{{title}}</div>-->
+<div id ="quantity">Quantity: {{quantity}}</div>
+<div id ="perishable">Perishable: {{perishable}}</div>
 <!--<div id="button">{{button}}</div>-->
 <button ion-button (click)="pushPage()" id="volunteerButton">Volunteer!</button>
 </ion-content>

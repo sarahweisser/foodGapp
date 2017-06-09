@@ -1,3 +1,52 @@
-page-popup-info-window {
-
+.ios,
+.md {
+    page-popup-info-window {
+        $popover-ios-background: black;
+        $popover-md-background: black;
+        .popupWindow {} // .content-ios {background: green;}
+        // .popover-ios .popover-content{background: black !important;display:none;}
+    }
+    #title {
+        text-align: center;
+        font-size: 20px;
+        width: auto;
+        height: auto;
+    }
+    #quantity {
+        text-align: center;
+        font-size: 26px;
+        padding-top: 46px;
+    }
+    #perishable {
+        padding-top: 12px;
+        font-size: 22px;
+        text-align: center;
+        padding-bottom: 12px;
+    }
+    #volunteerButton {
+        width: 18em;
+    }
+    .popover {
+        background: rgba(0, 0, 0, 0.34);
+    }
+    .title {} .popover-content {
+        color: white;
+        background: rgba(0, 0, 0, 0.34);
+        border-radius: 5px;
+    }
+    .content {
+        color: white;
+        background: rgba(0, 0, 0, 0.64);
+    }
+    .button {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: #d29d10;
+    }
 }

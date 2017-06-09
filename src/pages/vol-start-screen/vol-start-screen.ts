@@ -48,6 +48,7 @@ export class VolStartScreenPage {
 
   ionViewWillEnter() {
     this.displayGoogleMap();
+    
   }
 
 
@@ -59,8 +60,9 @@ export class VolStartScreenPage {
       let mapOptions = {
         center: zipCode,
         zoom: 14,
+        disableDefaultUI: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-      } 
+      }
 
       this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
 
@@ -74,6 +76,7 @@ export class VolStartScreenPage {
     }).catch((error) => {
       console.log('Error getting location', error);
     });
+
 
 
 
@@ -104,37 +107,20 @@ export class VolStartScreenPage {
 
   markerInfo(marker) {
 
-    // var infoWindowContent = '<div id="restaurantMapDiv"><h1 id="header" class="header">' + marker.title + '</h1></div>' +
-    //   '<a href="https://www.google.com">Hello</a><button ion-button round>Click me </button>';
-    // var infoWindow = new google.maps.InfoWindow({
-    //   content: infoWindowContent
-    // });
-    //console.log("asdasdhgfhdfgjdfj "+marker.latitude);
     marker.addListener('click', () => {
       var position = new google.maps.LatLng(marker.latitude, marker.longitude);
-    
-     console.log("asdfasdfas "+position);
-     console.log("iknew it"+ marker.latitude);
+
+      //  console.log("asdfasdfas "+position);
+      //  console.log("iknew it"+ marker.latitude);
 
 
       let popover = this.popoverCtrl.create(PopupInfoWindowPage, { marker: marker, position: position });
       popover.present({
 
       });
-      // console.log(marker.title);
 
-      // this.events.publish('user:created',marker.title);
-
-      // this.navCtrl.push(PopupInfoWindowPage, {
-      //   param1: 'John', param2: 'Johnson'
-      // });
-      // console.log(marker.title);
-
-      // this.navCtrl.push(HomePage)
-      //this.closeAllInfoWindows();
-      // infoWindow.open(this.map, marker);
     });
-    // this.infoWindows.push(infoWindow);
+
   }
 
 
@@ -148,8 +134,8 @@ export class VolStartScreenPage {
         title: marker.name,
         quantity: marker.quantity,
         perishable: marker.perishable,
-        latitude:marker.latitude,
-        longitude:marker.longitude,
+        latitude: marker.latitude,
+        longitude: marker.longitude,
         animation: google.maps.Animation.DROP
       });
       restaurantMarkerClick.setMap(this.map);
@@ -157,6 +143,4 @@ export class VolStartScreenPage {
     }
   }
 
-
- 
 }

@@ -45,13 +45,16 @@ export class SignupTypePage {
 
   volunteerTrue(){
     this.volunteer =true;
+    this.donate = false;
   }
 
   donateTrue(){
     this.donate =true;
+    this.volunteer = false;
   }
   partnerTrue(){
     this.acceptDonate=true;
+    this.volunteer = false;
   }
 
 

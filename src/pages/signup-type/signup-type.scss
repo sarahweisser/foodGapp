@@ -1,4 +1,12 @@
+.ios, .md{
 
-page-signup-type {
+  page-signup-type {
 
+    .toolbar-background{
+    background: color($colors,greener)
+    }
+
+    $toolbar-ios-title-text-color: danger;
+    $toolbar-ios-title-text-color: color($colors, light);
+  }
 }

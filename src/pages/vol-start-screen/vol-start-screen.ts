@@ -126,7 +126,7 @@ getLoader() {
       popover.present({
 
       });
-
+     popover.dismiss
     });
 
   }

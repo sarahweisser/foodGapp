@@ -12,6 +12,7 @@ import { ProgressPage } from '../pages/progress/progress';
 import { SignupPage } from '../pages/signup/signup';
 import { VolStartScreenPage } from '../pages/vol-start-screen/vol-start-screen';
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
+import { SignupTypePage } from '../pages/signup-type/signup-type';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +28,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProgressPage,
     SignupPage,
     VolStartScreenPage,
-    WayPointMapPage
+    WayPointMapPage,
+    SignupTypePage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProgressPage,
     SignupPage,
     VolStartScreenPage,
-    WayPointMapPage
+    WayPointMapPage,
+    SignupTypePage
+
   ],
   providers: [
     LaunchNavigator,

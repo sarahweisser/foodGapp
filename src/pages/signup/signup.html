@@ -13,26 +13,35 @@
   </ion-navbar>
 </ion-header>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<ion-content padding>
+
+<ion-content padding ng-controller="ExampleController">
   <h3>Sign Up Now</h3>
 <section>
-  <form>
-  First Name:
-  <input type="text"><br /><br />
-  Last Name:
-  <input type="text" /><br />
-  <p>Email:
-<input type="email" name="email" ng-model="email" required>
-</p>
-  Phone Number:
-  <input type="text" /><br /><br />
-  Password:
-  <input type="password" /><br /><br />
-  Retype Password:
-  <input type="password" />
-</form>
-  <div>
-    <button ion-button secondary menuToggle>Sign Up</button>
+  <form name="userForm" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" class="name" placeholder="First Name" name="fname" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Last Name" name="lname" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="email" placeholder="Email" name="useremail" ng-model="useremail" ng-minlength ="5" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="phone" placeholder="Phone" name="phone" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Password" name="password" ng-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Retype Password" name="password2" ng-required="true"></ion-input>
+      </ion-item>
+  </ion-list>
+  <div padding align="center">
+    <button ion-button ng-disabled="userForm.$invalid" [navPush]="signupTypePage">Sign In</button>
   </div>
+</form>
+
 </section>
 </ion-content>

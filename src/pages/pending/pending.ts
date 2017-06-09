@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { SignupTypePage } from '../signup-type/signup-type';
 /**
  * Generated class for the PendingPage page.
  *
@@ -13,10 +13,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'pending.html',
 })
 export class PendingPage {
-
+  
+  signupTypePage = SignupTypePage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  goBackHome() {
+    this.navCtrl.setRoot(this.signupTypePage);
+    this.navCtrl.popToRoot();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad PendingPage');
   }

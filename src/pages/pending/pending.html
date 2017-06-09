@@ -5,14 +5,22 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>pendingPage</ion-title>
+  <ion-navbar color="greener">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pick up is posted!</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <div padding align="center">
+    <h2>Contacting volunteers to drive pick up...</h2>
+  </div>
 
+  <div padding align="center">
+    <button ion-button (click)="goBackHome()">Cancel</button>
+  </div>
 </ion-content>

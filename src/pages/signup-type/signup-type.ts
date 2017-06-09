@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PostPage } from '../post/post';
+import { VolStartScreenPage } from '../vol-start-screen/vol-start-screen';
 
 /**
  * Generated class for the SignupTypePage page.
@@ -14,11 +16,42 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SignupTypePage {
 
+  postPage = PostPage;
+  volStart = VolStartScreenPage;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupTypePage');
   }
+  volunteer: boolean;
+  donate: boolean;
+  acceptDonate: boolean;
+
+ continue() {
+    if (this.volunteer) {
+      this.navCtrl.push(PostPage);
+    }
+    else if(this.donate)
+    {
+      this.navCtrl.push(VolStartScreenPage);
+    }
+  }
+
+  volunteerTrue(){
+    this.volunteer =true;
+  }
+
+  donateTrue(){
+    this.donate =true;
+  }
+  partnerTrue(){
+    this.acceptDonate=true;
+  }
+
+
+
+
 
 }

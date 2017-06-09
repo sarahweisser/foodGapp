@@ -20,7 +20,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
 
-  rootPage: any = WayPointMapPage;
+  rootPage: any = VolStartScreenPage;
 
   //rootPage: any = SignupTypePage;
   pages: Array<{title: string, component: any}>;

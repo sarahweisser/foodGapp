@@ -13,6 +13,8 @@ import { SignupPage } from '../pages/signup/signup';
 import { VolStartScreenPage } from '../pages/vol-start-screen/vol-start-screen';
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 import { SignupTypePage } from '../pages/signup-type/signup-type';
+import { HealthPartnerPage } from '../pages/health-partner/health-partner';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +22,7 @@ import { SignupTypePage } from '../pages/signup-type/signup-type';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ProgressPage; 
+  rootPage: any = HealthPartnerPage; 
 
   pages: Array<{title: string, component: any}>;
 

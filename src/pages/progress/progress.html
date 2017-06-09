@@ -1,18 +1,32 @@
-<!--
-  Generated template for the ProgressPage page.
+<ion-header class="header">
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+  <ion-navbar class="navBar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> <img class="titleImg" src="assets/img/foodbank-logo.png"></ion-title>
 
-  <ion-navbar>
-    <ion-title>progressPage</ion-title>
+
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="progressContent" padding>
 
+
+  <ion-card-content id="driverinfo">
+    <div class="thanks">Thank you for being a partner!</div>
+ 
+
+  <p>The volunteer</p>
+  <p> Shawn</p>
+  <p>will be here in </p>
+  <p>32 mins</p>
+    </ion-card-content>
+
+  <div id="mapSpacing"></div>
+  <div #map id="map"></div>
+
+  <button class="donorProgress" ion-button (click)='callDriver()'>Contact Driver</button>
 </ion-content>

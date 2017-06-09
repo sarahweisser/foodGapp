@@ -22,7 +22,9 @@ import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 import { PopupInfoWindowPage } from '../pages/popup-info-window/popup-info-window';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { SignupTypePage } from '../pages/signup-type/signup-type';
+import { SetAvailabilityPage } from '../pages/set-availability/set-availability';
 import { HealthPartnerPage } from '../pages/health-partner/health-partner';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,6 +45,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     VolStartScreenPage,
     PopupInfoWindowPage,
     WayPointMapPage,
+    SignupTypePage,
+    SetAvailabilityPage,
     HealthPartnerPage,
     SignupTypePage
   ],
@@ -69,6 +73,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     VolStartScreenPage,
     PopupInfoWindowPage,
     WayPointMapPage,
+    SignupTypePage,
+    SetAvailabilityPage,
     HealthPartnerPage,
     SignupTypePage
   ],

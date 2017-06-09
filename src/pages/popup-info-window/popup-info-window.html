@@ -7,13 +7,38 @@
 <ion-header>
 
 <div id ="title">{{title}}</div>
+<hr>
 </ion-header>
 
 
 <ion-content id="popupWindow">
 <!--<div id ="title">{{title}}</div>-->
-<div id ="quantity">Quantity: {{quantity}}</div>
-<div id ="perishable">Perishable: {{perishable}}</div>
+ <ion-row>
+    <ion-col>
+  <div id="spacer"></div>
+    </ion-col>
+     </ion-row>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <div id ="quantity">Quantity: {{quantity}}</div>
+    </ion-col>
+      </ion-row>
+     <ion-row>
+    <ion-col>
+    <div id ="perishable">Perishable: {{perishable}}</div>
+    </ion-col>
+     </ion-row>
+
+    
+
+  <ion-row>
+    <ion-col>
+ <button ion-button (click)="pushPage()" id="volunteerButton">Volunteer!</button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
 <!--<div id="button">{{button}}</div>-->
-<button ion-button (click)="pushPage()" id="volunteerButton">Volunteer!</button>
+<!--<button ion-button (click)="pushPage()" id="volunteerButton">Volunteer!</button>-->
 </ion-content>

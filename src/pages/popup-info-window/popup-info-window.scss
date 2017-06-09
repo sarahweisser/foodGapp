@@ -11,11 +11,12 @@
         font-size: 20px;
         width: auto;
         height: auto;
+            border-bottom: 1px solid #d29d10;
     }
     #quantity {
         text-align: center;
-        font-size: 26px;
-        padding-top: 46px;
+        font-size: 20px;
+        padding-top: 25px;
     }
     #perishable {
         padding-top: 12px;
@@ -24,7 +25,7 @@
         padding-bottom: 12px;
     }
     #volunteerButton {
-        width: 18em;
+        width: 100%;
     }
     .popover {
         background: rgba(0, 0, 0, 0.34);
@@ -49,4 +50,10 @@
         padding-bottom: 0;
         background-color: #d29d10;
     }
+    #spacer{
+  padding-top:4px;
+}
+
+
+    // .header{background:rgba(0, 0, 0, 0.64);}
 }

@@ -31,23 +31,30 @@ export class SignupTypePage {
 
  continue() {
     if (this.volunteer) {
+      this.navCtrl.push(VolStartScreenPage);
+    }
+    else if(this.donate)
+    {
       this.navCtrl.push(PostPage);
     }
     else if(this.donate)
     {
-      this.navCtrl.push(VolStartScreenPage);
+      this.navCtrl.push(PostPage)
     }
   }
 
   volunteerTrue(){
     this.volunteer =true;
+    this.donate = false;
   }
 
   donateTrue(){
     this.donate =true;
+    this.volunteer = false;
   }
   partnerTrue(){
     this.acceptDonate=true;
+    this.volunteer = false;
   }
 
 

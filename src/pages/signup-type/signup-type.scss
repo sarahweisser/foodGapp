@@ -1,8 +1,15 @@
 .ios, .md{
-page-signup-type {
-.button {
-       padding:5px;
-        background-color: #d29d10;
+
+
+  page-signup-type {
+
+    .toolbar-background{
+    background: color($colors,greener)
     }
-}
+
+    $toolbar-ios-title-text-color: danger;
+    $toolbar-ios-title-text-color: color($colors, light);
+  }
+
+
 }

@@ -49,12 +49,14 @@ export class VolStartScreenPage {
   }
 
   ionViewWillEnter() {
-     this.loader = this.getLoader();
+    this.loader = this.getLoader();
     this.loader.present();
     this.displayGoogleMap();
 
 
   }
+
+  
 getLoader() {
     let loader = this.loadingCtrl.create({
       content: "Loading. . ."
@@ -76,12 +78,12 @@ getLoader() {
 
       this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
       this.myMarker(zipCode);
-      
+      this.loader.dismiss();
       const markers = function () {
         this.getMarkers();
          this.loader.dismiss();
       }
-      setTimeout(markers.bind(this), 1000);
+      setTimeout(markers.bind(this), 3000);
 
     }).catch((error) => {
       console.log('Error getting location', error);

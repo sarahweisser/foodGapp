@@ -13,6 +13,7 @@ import { VolStartScreenPage } from '../pages/vol-start-screen/vol-start-screen';
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
 import { SignupTypePage } from '../pages/signup-type/signup-type';
 import { SetAvailabilityPage } from '../pages/set-availability/set-availability';
+import { HealthPartnerPage } from '../pages/health-partner/health-partner';
 
 @Component({
   templateUrl: 'app.html'

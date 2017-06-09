@@ -3,6 +3,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Location } from '../../shared/location';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import {CompletePage} from '../complete/complete';
 /**
  * Generated class for the ProgressPage page.
  *
@@ -24,10 +25,8 @@ export class ProgressPage {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionsPanel: ElementRef;
   map: any;
-
   title: string = 'Pickup Details';
   buttonText: string = 'Accept';
-
   currentLocation: any;
   pickupLocation: any;
   dropOffLocation: Location;
@@ -40,6 +39,7 @@ export class ProgressPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private launchNavigator: LaunchNavigator) {
+       setTimeout(function(){navCtrl.push(CompletePage)},5000);
   }
 
 

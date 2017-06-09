@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+
 import { PendingPage } from '../pages/pending/pending';
 import { PostPage } from '../pages/post/post';
 import { ProgressPage } from '../pages/progress/progress';

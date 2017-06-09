@@ -20,7 +20,7 @@ import { SignupTypePage } from '../pages/signup-type/signup-type';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = VolStartScreenPage; 
+  rootPage: any = ProgressPage; 
 
   pages: Array<{title: string, component: any}>;
 

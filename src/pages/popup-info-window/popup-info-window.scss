@@ -3,8 +3,12 @@
     page-popup-info-window {
         $popover-ios-background: black;
         $popover-md-background: black;
-        .popupWindow {} // .content-ios {background: green;}
-        // .popover-ios .popover-content{background: black !important;display:none;}
+        .popupWindow {
+// background:rgba(0, 0, 0, 0.64);
+
+
+        }
+        
     }
     #title {
         text-align: center;
@@ -28,16 +32,16 @@
         width: 100%;
     }
     .popover {
-        background: rgba(0, 0, 0, 0.34);
+        background: rgba(0, 0, 0, 0.64);
     }
     .title {} .popover-content {
         color: white;
-        background: rgba(0, 0, 0, 0.34);
+        background: rgba(0, 0, 0, 0.64);
         border-radius: 5px;
     }
-    .content {
+    .popupContent {
         color: white;
-        background: rgba(0, 0, 0, 0.64);
+        background: rgba(0, 0, 0, 0.44);
     }
     .button {
         margin-left: 0;
@@ -53,7 +57,14 @@
     #spacer{
   padding-top:4px;
 }
-
+.popover-content{
+  top: 264.5px;
+    left: 50px !important;
+    transform-origin: left top 0px;
+    width: 20em;
+    
+  
+}
 
     // .header{background:rgba(0, 0, 0, 0.64);}
 }

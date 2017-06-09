@@ -4,12 +4,6 @@ import { Location } from '../../shared/location';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
 declare var google: any;
-/**
- * Generated class for the WayPointMapPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -38,9 +32,6 @@ export class WayPointMapPage {
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
               private launchNavigator: LaunchNavigator) {
-
-
-
   }
 
   getLoader() {

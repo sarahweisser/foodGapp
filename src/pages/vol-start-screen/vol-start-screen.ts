@@ -49,7 +49,7 @@ export class VolStartScreenPage {
   ionViewWillEnter() {
     this.displayGoogleMap();
     
-  }
+  } 
 
 
   displayGoogleMap() {

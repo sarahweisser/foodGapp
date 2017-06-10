@@ -18,6 +18,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { Geolocation } from '@ionic-native/geolocation';
 import { VolStartScreenPage } from '../pages/vol-start-screen/vol-start-screen';
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
+import { WaypointMap2Page } from '../pages/waypoint-map2/waypoint-map2';
 import { PopupInfoWindowPage } from '../pages/popup-info-window/popup-info-window';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { SignupTypePage } from '../pages/signup-type/signup-type';
@@ -42,6 +43,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     VolStartScreenPage,
     PopupInfoWindowPage,
     WayPointMapPage,
+    WaypointMap2Page,
     SignupTypePage,
     MapComponent
   ],
@@ -65,6 +67,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     VolStartScreenPage,
     PopupInfoWindowPage,
     WayPointMapPage,
+    WaypointMap2Page,
     SignupTypePage
 
   ],

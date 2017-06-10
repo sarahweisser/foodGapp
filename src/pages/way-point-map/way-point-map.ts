@@ -2,10 +2,11 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 // import { Location } from '../../shared/location';
 // import { SignupPage } from '../signup/signup';
+import { WaypointMap2Page } from '../waypoint-map2/waypoint-map2';
 import { MapComponent } from '../../components/map/map.component';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
-//declare var google: any;
+declare var google: any;
 /**
  * Generated class for the WayPointMapPage page.
  *
@@ -47,16 +48,6 @@ export class WayPointMapPage {
 
   }
 
-  // getPickupLocation() {
-  //   this.pickupLocation = this.navParams.get('location');
-  // }
-
-  // getLoader() {
-  //   let loader = this.loadingCtrl.create({
-  //     content: "Loading. . ."
-  //   });
-  //   return loader;
-  // }
 
   navigate(start, end) {
     let options: LaunchNavigatorOptions = {
@@ -72,6 +63,7 @@ export class WayPointMapPage {
 
   confirm() {
     // navigate from current location to pickup
+    this.navCtrl.push(WaypointMap2Page)
     this.navigate('Philadelphia, PA', 'Baltimore, MD');
    
     
@@ -84,88 +76,9 @@ export class WayPointMapPage {
     this.navigate('Wilmington, DE', 'Philadelphia, PA')
   }
 
-  // loadMap() {
-  //   let LatLng = this.currentLocation;
 
-  //   let mapOptions = {
-  //     center: LatLng,
-  //     zoom: 15,
-  //     mapTypeId: google.maps.MapTypeId.ROADMAP
-  //   }
-
-  //   this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-  // }
-
-  // startNavigating() {
-  //   var icons = {
-  //     start: new google.maps.MarkerImage(
-  //     // URL
-  //     'start.png',
-  //     // (width,height)
-  //     new google.maps.Size( 44, 32 ),
-  //     // The origin point (x,y)
-  //     new google.maps.Point( 0, 0 ),
-  //     // The anchor point (x,y)
-  //     new google.maps.Point( 22, 32 )
-  //     ),
-  //     end: new google.maps.MarkerImage(
-  //     // URL
-  //     'end.png',
-  //     // (width,height)
-  //     new google.maps.Size( 44, 32 ),
-  //     // The origin point (x,y)
-  //     new google.maps.Point( 0, 0 ),
-  //     // The anchor point (x,y)
-  //     new google.maps.Point( 22, 32 )
-  //     )
-  //   };
-
-  //     let directionsService = new google.maps.DirectionsService;
-  //     let directionsDisplay = new google.maps.DirectionsRenderer({
-  //       suppressMarkers: true
-  //     });
-
-  //     directionsDisplay.setMap(this.map);
-  //     directionsDisplay.setPanel(this.directionsPanel.nativeElement);
-
-  //     directionsService.route({
-  //       origin: this.currentLocation,
-  //       destination: this.dropOffLocation,
-  //       waypoints: [{
-  //         location: this.pickupLocation,
-  //         stopover: true
-
-  //       }],
-  //       travelMode: google.maps.TravelMode['DRIVING']
-  //     }, (res, status) => {
-  //         if (status == google.maps.DirectionsStatus.OK) {
-  //           directionsDisplay.setDirections(res);
-  //           this.makeMarker(this.currentLocation, 'You are here')
-  //           this.makeMarker(this.pickupLocation, 'Pickup Location')
-  //           this.makeMarker(this.dropOffLocation, 'Dropoff Location')
-  //           this.loader.dismiss();
-  //         } else {
-  //           console.warn(status);
-  //         }
-  //     })
-  // }
-
-  // makeMarker(position, title) {
-  //   new google.maps.Marker({
-  //     position: position,
-  //     map: this.map,
-  //     //icon: icon,
-  //     title: title
-  //   });
-  //   }
 
   ionViewDidLoad() {
-    //this.mapComponent.loadMap();
     this.mapComponent;
-    //this.getPickupLocation();
-    //this.loader = this.getLoader();
-    //this.loader.present();
-    //this.loadMap();
-    //this.startNavigating();
   }
 }

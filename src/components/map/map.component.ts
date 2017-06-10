@@ -39,12 +39,6 @@ export class MapComponent {
       //console.log("Map loading")
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
-            console.log("POsition")
-           console.log(position)
-           console.log(new google.maps.LatLng)
-
-               console.log("MAP ELEMENR")
-console.log(this.mapElement)
            
         let currentPosition = new google.maps.LatLng(
             position.coords.latitude, position.coords.longitude);
@@ -57,7 +51,6 @@ console.log(this.mapElement)
 
         this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     
-
         var icons = {
         start: new google.maps.MarkerImage(
         // URL
@@ -88,14 +81,19 @@ console.log(this.mapElement)
 
       directionsDisplay.setMap(this.map);
       //directionsDisplay.setPanel(this.directionsPanel.nativeElement);
+      let wypts = [];
+      if (this.waypoint) {
+        this.makeMarker(this.waypoint, 'Dropoff Location')
+        wypts.push({
+          location: this.waypoint,
+          stopover: true
+        })
+      }
 
       directionsService.route({
         origin: currentPosition,
         destination: this.destination,
-        waypoints: [{
-          location: this.waypoint,
-          stopover: true
-        }],
+        waypoints: wypts,
         travelMode: google.maps.TravelMode['DRIVING']
       }, (res, status) => {
           
@@ -103,7 +101,6 @@ console.log(this.mapElement)
             directionsDisplay.setDirections(res);
             this.makeMarker(currentPosition, 'You are here')
             this.makeMarker(this.destination, 'Pickup Location')
-            this.makeMarker(this.waypoint, 'Dropoff Location')
             this.loader.dismiss();
           } else {
             console.warn(status);
@@ -129,7 +126,5 @@ console.log(this.mapElement)
     this.loader = this.getLoader();
     this.loader.present();
     this.loadMap();
-
-    //this.loadMap();
   }
 }

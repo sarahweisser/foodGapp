@@ -21,7 +21,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
 
-  rootPage: any = VolStartScreenPage;
+  rootPage: any = WayPointMapPage;
 
   //rootPage: any = SignupTypePage;
   pages: Array<{title: string, component: any}>;

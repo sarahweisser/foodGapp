@@ -7,6 +7,7 @@ import { Http } from '@angular/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { NgZone } from '@angular/core';
 import 'rxjs/add/operator/map';
+// import {Page} from 'ionic/ionic';
 import { DataService } from '../../app/services/data.service';
 
 
@@ -48,70 +49,45 @@ export class VolStartScreenPage {
   }
 
   ionViewWillEnter() {
-    // this.loader = this.getLoader();
-    // this.loader.present();
-    // this.loader.dismiss();
+    this.loader = this.getLoader();
+    this.loader.present();
     this.displayGoogleMap();
 
 
   }
 
 
-  // getLoader() {
-  //   let loader = this.loadingCtrl.create({
-  //     content: "Loading. . ."
-  //   });
-  //   return loader;
-  // }
+  getLoader() {
+    let loader = this.loadingCtrl.create({
+      content: "Loading. . ."
+    });
+    return loader;
+  }
 
   displayGoogleMap() {
-   
-      navigator.geolocation.getCurrentPosition((position) => {
-        // this.loader.dismiss();
-        let zipCode = new google.maps.LatLng(39.749391, -75.561390);
-        // let current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        let mapOptions = {
-          center: zipCode,
-          disableDefaultUI: true,
-          zoom: 14,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
+    this.geolocation.getCurrentPosition().then(position => {
+      this.loader.dismiss();
+      let zipCode = new google.maps.LatLng(39.749391, -75.561390);
+      // let current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      let mapOptions = {
+        center: zipCode,
+        disableDefaultUI: true,
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
 
-        this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
-        this.myMarker(zipCode);
+      this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
+      this.myMarker(zipCode);
 
-        const markers = function () {
-          this.getMarkers();
-          // this.loader.dismiss();
-        }
-        setTimeout(markers.bind(this), 1000);
+      const markers = function () {
+        this.getMarkers();
+        this.loader.dismiss();
+      }
+      setTimeout(markers.bind(this), 1000);
 
-      })
-    
-
-    // this.geolocation.getCurrentPosition().then(position => {
-    //   // this.loader.dismiss();
-    //   let zipCode = new google.maps.LatLng(39.749391, -75.561390);
-    //   // let current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    //   let mapOptions = {
-    //     center: zipCode,
-    //     disableDefaultUI: true,
-    //     zoom: 14,
-    //     mapTypeId: google.maps.MapTypeId.ROADMAP
-    //   }
-
-    //   this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
-    //   this.myMarker(zipCode);
-
-    //   const markers = function () {
-    //     this.getMarkers();
-    //     // this.loader.dismiss();
-    //   }
-    //   setTimeout(markers.bind(this), 1000);
-
-    // }).catch((error) => {
-    //   console.log('Error getting location', error);
-    // });
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
 
 
 
@@ -119,13 +95,13 @@ export class VolStartScreenPage {
   }
   myMarker(position) {
     //var position = new google.maps.LatLng(marker.latitude, marker.longitude);
-    //   var image = {
-    //   url: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-    //       new google.maps.Size(22, 22),
-    //       new google.maps.Point(0, 18),
-    //       new google.maps.Point(11, 11)),
+  //   var image = {
+  //   url: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+  //       new google.maps.Size(22, 22),
+  //       new google.maps.Point(0, 18),
+  //       new google.maps.Point(11, 11)),
 
-    // };
+  // };
     var currentPositionIcon = new google.maps.Marker({
       optimized: false,
       position: position,
@@ -140,7 +116,7 @@ export class VolStartScreenPage {
 
   getMarkers() {
 
-    this.http.get('../../assets/data/markers.json')
+    this.http.get('assets/data/markers.json')
       .map((res) => res.json())
       .subscribe(data => {
         this.addMarkersToMap(data);

@@ -19,7 +19,7 @@
   </div>
 
 <div class = "login-box">
-  <form (ngSubmit) ="login()" #registerForm="ngForm">
+  <form>
     <ion-row>
       <ion-col>
         <ion-list inset>
@@ -48,7 +48,7 @@
 <ion-row>
     <ion-col class="signup-col">
       <button ion-button class="submit-btn" full type="submit" [navPush]="signupTypePage">Sign In</button>
-      <button ion-button class="register-btn" block clear [navPush]="HomePage">Existing Account</button>
+      <button ion-button class="register-btn" block clear navPop>Existing Account</button>
     </ion-col>
 </ion-row>
 </form>

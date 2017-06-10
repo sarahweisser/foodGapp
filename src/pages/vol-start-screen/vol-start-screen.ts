@@ -83,7 +83,7 @@ getLoader() {
         this.getMarkers();
         //  this.loader.dismiss();
       }
-      setTimeout(markers.bind(this), 3000);
+      setTimeout(markers.bind(this), 2000);
 
     }).catch((error) => {
       console.log('Error getting location', error);

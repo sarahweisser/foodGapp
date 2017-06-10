@@ -7,7 +7,6 @@ import { Http } from '@angular/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { NgZone } from '@angular/core';
 import 'rxjs/add/operator/map';
-// import {Page} from 'ionic/ionic';
 import { DataService } from '../../app/services/data.service';
 
 
@@ -95,20 +94,15 @@ export class VolStartScreenPage {
   }
   myMarker(position) {
     //var position = new google.maps.LatLng(marker.latitude, marker.longitude);
-  //   var image = {
-  //   url: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-  //       new google.maps.Size(22, 22),
-  //       new google.maps.Point(0, 18),
-  //       new google.maps.Point(11, 11)),
-
-  // };
+    var image = {
+    icon: new google.maps.MarkerImage('assets/img/ball2.gif'),
+     size: new google.maps.Size(10, 8),
+ 
+  };
     var currentPositionIcon = new google.maps.Marker({
       optimized: false,
       position: position,
-      icon: new google.maps.MarkerImage('assets/img/mobileimgs2.png',
-        new google.maps.Size(22, 22),
-        new google.maps.Point(0, 18),
-        new google.maps.Point(11, 11))
+      icon: image.icon
     });
     currentPositionIcon.setMap(this.map);
 

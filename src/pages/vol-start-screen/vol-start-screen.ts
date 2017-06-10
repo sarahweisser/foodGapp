@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, PopoverController, Events,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, PopoverController, Events, LoadingController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HomePage } from '../home/home';
 import { PopupInfoWindowPage } from '../popup-info-window/popup-info-window';
@@ -49,15 +49,15 @@ export class VolStartScreenPage {
   }
 
   ionViewWillEnter() {
-    // this.loader = this.getLoader();
-    // this.loader.present();
+    this.loader = this.getLoader();
+    this.loader.present();
     this.displayGoogleMap();
 
 
   }
 
 
-getLoader() {
+  getLoader() {
     let loader = this.loadingCtrl.create({
       content: "Loading. . ."
     });
@@ -66,9 +66,9 @@ getLoader() {
 
   displayGoogleMap() {
     this.geolocation.getCurrentPosition().then(position => {
-
+      this.loader.dismiss();
       let zipCode = new google.maps.LatLng(39.749391, -75.561390);
-      // let home = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      // let current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
         center: zipCode,
         disableDefaultUI: true,
@@ -78,12 +78,12 @@ getLoader() {
 
       this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
       this.myMarker(zipCode);
-      // this.loader.dismiss();
+
       const markers = function () {
         this.getMarkers();
-        //  this.loader.dismiss();
+        this.loader.dismiss();
       }
-      setTimeout(markers.bind(this), 2000);
+      setTimeout(markers.bind(this), 1000);
 
     }).catch((error) => {
       console.log('Error getting location', error);
@@ -95,9 +95,17 @@ getLoader() {
   }
   myMarker(position) {
     //var position = new google.maps.LatLng(marker.latitude, marker.longitude);
+  //   var image = {
+  //   url: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+  //       new google.maps.Size(22, 22),
+  //       new google.maps.Point(0, 18),
+  //       new google.maps.Point(11, 11)),
+
+  // };
     var currentPositionIcon = new google.maps.Marker({
+      optimized: false,
       position: position,
-      icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+      icon: new google.maps.MarkerImage('assets/img/mobileimgs2.png',
         new google.maps.Size(22, 22),
         new google.maps.Point(0, 18),
         new google.maps.Point(11, 11))
@@ -105,10 +113,10 @@ getLoader() {
     currentPositionIcon.setMap(this.map);
 
   }
-
+ 
   getMarkers() {
 
-    this.http.get('../../assets/data/markers.json')
+    this.http.get('assets/data/markers.json')
       .map((res) => res.json())
       .subscribe(data => {
         this.addMarkersToMap(data);
@@ -126,7 +134,7 @@ getLoader() {
       popover.present({
 
       });
-
+      popover.dismiss
     });
 
   }

@@ -1,0 +1,23 @@
+data: [
+  {
+    "destinationid": 101,
+    "destinationName": "CC Thrift Center",
+    "destinationAddress": "1320 E 4th St, Wilmington, DE 19802",
+    "destinationLocation": {
+      "lat": 39.736862,
+      "lng": -75.542728
+    },
+    "phone": 2675555555
+  },
+  {
+    "destinationid": 102,
+    "destinationName": "Brandywine Community UMC- FC",
+    "destinationAddress": "2200 N Market St, Wilmington, DE 19802",
+    "destinationLocation": {
+      "lat": 39.752596,
+      "lng": -75.539578
+    },
+    "phone": 2675555555
+  }
+
+]

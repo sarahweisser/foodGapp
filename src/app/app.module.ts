@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
-
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -19,19 +18,24 @@ import { SignupPage } from '../pages/signup/signup';
 import { Geolocation } from '@ionic-native/geolocation';
 import { VolStartScreenPage } from '../pages/vol-start-screen/vol-start-screen';
 import { WayPointMapPage } from '../pages/way-point-map/way-point-map';
+import { WaypointMap2Page } from '../pages/waypoint-map2/waypoint-map2';
 import { PopupInfoWindowPage } from '../pages/popup-info-window/popup-info-window';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { SignupTypePage } from '../pages/signup-type/signup-type';
+
+import { MapComponent } from '../components/map/map.component';
 import { SetAvailabilityPage } from '../pages/set-availability/set-availability';
 import { HealthPartnerPage } from '../pages/health-partner/health-partner';
-
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { AuthServiceProvider } from '../app/services/auth-service';
 
+import { PickupService } from '../app/services/pickup.service';
+
 @NgModule({
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [
     MyApp,
     HomePage,
@@ -46,7 +50,9 @@ import { AuthServiceProvider } from '../app/services/auth-service';
     VolStartScreenPage,
     PopupInfoWindowPage,
     WayPointMapPage,
+    WaypointMap2Page,
     SignupTypePage,
+    MapComponent,
     SetAvailabilityPage,
     HealthPartnerPage,
     SignupTypePage
@@ -55,9 +61,6 @@ import { AuthServiceProvider } from '../app/services/auth-service';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAe7u6-rTZ3TLpwkroghe_LQSVRLfKzzoI'
-    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -74,19 +77,25 @@ import { AuthServiceProvider } from '../app/services/auth-service';
     VolStartScreenPage,
     PopupInfoWindowPage,
     WayPointMapPage,
+    WaypointMap2Page,
     SignupTypePage,
     SetAvailabilityPage,
     HealthPartnerPage,
     SignupTypePage
+
   ],
   providers: [
+    LaunchNavigator,
     StatusBar,
+    MapComponent,
     Geolocation,
     GoogleMaps,
     SplashScreen,
     Deeplinks,
-    LaunchNavigator,
+    PickupService,
+
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    LaunchNavigator, 
     AuthServiceProvider
   ]
 })

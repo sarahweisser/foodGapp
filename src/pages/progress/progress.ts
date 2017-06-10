@@ -71,6 +71,7 @@ export class ProgressPage {
     let mapOptions = {
       center: LatLng,
       zoom: 20,
+       disableDefaultUI: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
 

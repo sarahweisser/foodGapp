@@ -105,7 +105,7 @@ export class VolStartScreenPage {
     var currentPositionIcon = new google.maps.Marker({
       optimized: false,
       position: position,
-      icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+      icon: new google.maps.MarkerImage('assets/img/mobileimgs2.png',
         new google.maps.Size(22, 22),
         new google.maps.Point(0, 18),
         new google.maps.Point(11, 11))
@@ -113,7 +113,7 @@ export class VolStartScreenPage {
     currentPositionIcon.setMap(this.map);
 
   }
-
+ 
   getMarkers() {
 
     this.http.get('assets/data/markers.json')

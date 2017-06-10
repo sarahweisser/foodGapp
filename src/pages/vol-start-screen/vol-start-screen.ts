@@ -42,21 +42,21 @@ export class VolStartScreenPage {
     public modalCtrl: ModalController,
     public popoverCtrl: PopoverController,
     public events: Events,
-    public data: DataService, 
+    public data: DataService,
     public loadingCtrl: LoadingController,
     private deeplinks: Deeplinks) {
     this.infoWindows = [];
   }
 
   ionViewWillEnter() {
-    this.loader = this.getLoader();
-    this.loader.present();
+    // this.loader = this.getLoader();
+    // this.loader.present();
     this.displayGoogleMap();
 
 
   }
 
-  
+
 getLoader() {
     let loader = this.loadingCtrl.create({
       content: "Loading. . ."
@@ -78,12 +78,12 @@ getLoader() {
 
       this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
       this.myMarker(zipCode);
-      this.loader.dismiss();
+      // this.loader.dismiss();
       const markers = function () {
         this.getMarkers();
-         this.loader.dismiss();
+        //  this.loader.dismiss();
       }
-      setTimeout(markers.bind(this), 3000);
+      setTimeout(markers.bind(this), 2000);
 
     }).catch((error) => {
       console.log('Error getting location', error);
@@ -143,8 +143,8 @@ getLoader() {
         quantity: marker.quantity,
         perishable: marker.perishable,
         latitude: marker.latitude,
-        longitude: marker.longitude
-        // animation: google.maps.Animation.DROP
+        longitude: marker.longitude,
+        animation: google.maps.Animation.DROP
       });
       restaurantMarkerClick.setMap(this.map);
       this.markerInfo(restaurantMarkerClick);

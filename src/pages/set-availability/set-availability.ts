@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PendingPage } from '../pending/pending';
+import { WaitingPage } from '../waiting/waiting';
 
 /**
  * Generated class for the SetAvailabilityPage page.
@@ -16,7 +16,7 @@ import { PendingPage } from '../pending/pending';
 export class SetAvailabilityPage {
 
   title:string = 'Set availability';
-  pendingPage = PendingPage;
+  waitingPage = WaitingPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

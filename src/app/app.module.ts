@@ -29,6 +29,7 @@ import { HealthPartnerPage } from '../pages/health-partner/health-partner';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { AuthServiceProvider } from '../app/services/auth-service';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     SplashScreen,
     Deeplinks,
     LaunchNavigator,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthServiceProvider
   ]
 })
 export class AppModule { }

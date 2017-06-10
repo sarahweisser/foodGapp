@@ -11,7 +11,7 @@ import {CompletePage} from '../complete/complete';
  * on Ionic pages and navigation.
  */
 
-
+declare var window;
 declare var google: any;
 @IonicPage()
 @Component({
@@ -39,7 +39,7 @@ export class ProgressPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private launchNavigator: LaunchNavigator) {
-       setTimeout(function(){navCtrl.push(CompletePage)},5000);
+      //  setTimeout(function(){navCtrl.push(CompletePage)},5000);
   }
 
 
@@ -102,11 +102,18 @@ export class ProgressPage {
     })
   }
 
-
+driverNumber:string = "tel:7184963016";
+callDriver(){ 
+   window.location = this.driverNumber;
+}
 
   ionViewDidLoad() {
-    this.loadMap();
+  
     this.startNavigating();
+  }
+
+  ionViewWillEnter(){
+  this.loadMap();
   }
 }
 

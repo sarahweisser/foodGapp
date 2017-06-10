@@ -67,32 +67,28 @@
                 "API_KEY_FOR_IOS": "AIzaSyAe7u6-rTZ3TLpwkroghe_LQSVRLfKzzoI"
             },
             "cordova-plugin-geolocation": {},
-                "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
-                "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
-            },
-            "cordova-plugin-geolocation": {
-                "GEOLOCATION_USAGE_DESCRIPTION": " "
-            },
-            "ionic-plugin-deeplinks": {
-                "URL_SCHEME": "myapp",
-                "DEEPLINK_SCHEME": "https",
-                "DEEPLINK_HOST": "example.com",
-                "ANDROID_PATH_PREFIX": "/"
-            },
-            "uk.co.workingedge.phonegap.plugin.launchnavigator": {},
-            "cordova-plugin-console": {},
-            "cordova-plugin-device": {},
-            "cordova-plugin-splashscreen": {},
-            "cordova-plugin-statusbar": {},
-            "cordova-plugin-whitelist": {},
-            "ionic-plugin-keyboard": {}
+            "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
+            "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
         },
-        "platforms": [
-
-            "android",
-            "ios"
-        ]
-    }
-
-
-
+        "cordova-plugin-geolocation": {
+            "GEOLOCATION_USAGE_DESCRIPTION": " "
+        },
+        "ionic-plugin-deeplinks": {
+            "URL_SCHEME": "myapp",
+            "DEEPLINK_SCHEME": "https",
+            "DEEPLINK_HOST": "example.com",
+            "ANDROID_PATH_PREFIX": "/"
+        },
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": {},
+        "cordova-plugin-console": {},
+        "cordova-plugin-device": {},
+        "cordova-plugin-splashscreen": {},
+        "cordova-plugin-statusbar": {},
+        "cordova-plugin-whitelist": {},
+        "ionic-plugin-keyboard": {}
+    },
+    "platforms": [
+        "android",
+        "ios"
+    ]
+}

@@ -1,6 +1,29 @@
 .ios, .md{
   page-signup {
 
+
+    $toolbar-background-ios:black;
+    $popover-ios-background: black;
+    $popover-md-background:	black;
+
+    //.ion-header {}
+
+    .fixed-content{margin-top:0px !important;}
+
+    .toolbar-title{padding-left:0;}
+
+    .header{
+    background:rgba(0, 0, 0, 0.82);border-bottom: 3px solid #d29d10 !important;    border-radius: 2px;
+    }
+    .navBar{}
+
+    .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios{display:none;background: rgba(67, 137, 35, 0.62);}
+
+    .header-md .toolbar-background-md, .footer-md .toolbar-background-md{display:none;background: rgba(67, 137, 35, 0.62);}
+    .toolbar-title-md{text-align: center;}
+
+    .titleImg{    width: 4em;}
+    
     .login-content {
         background: #56CA96;
 

@@ -71,8 +71,12 @@ export class WayPointMapPage {
     this.mapComponent;
     
     navigator.geolocation.getCurrentPosition((position) => {
-      let pickups = this.pickupService.getPickupsForVolunteer(position.coords.latitude, position.coords.longitude);
-      console.log(pickups);
+
+      let pickups = this.pickupService.retrieveData((data) => {
+            console.log("PICKUPS")
+      console.log(data);
+      });
+  
     })
   }
 }

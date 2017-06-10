@@ -1,4 +1,4 @@
-data: [
+ [
   {
     "pickupid": 1001,
     "status": "open",
@@ -7,8 +7,8 @@ data: [
       "driverName": "Shawn",
       "driverPhone": 1234567890,
       "driverLocation": {
-        "lat": ,
-        "lng": ,
+        "lat": 0,
+        "lng": 0
       }
     },
     "donor": {
@@ -19,7 +19,7 @@ data: [
       "donorPhone": 2675555555,
       "donorLocation": {
         "lat": 39.749391,
-        "lng": -75.561390,
+        "lng": -75.561390
       },
       "instructions": "Leave out back."
     },
@@ -46,8 +46,8 @@ data: [
       "driverName": "Shawn",
       "driverPhone": 1234567890,
       "driverLocation": {
-        "lat": ,
-        "lng": ,
+        "lat": 0,
+        "lng": 0
       }
     },
     "donor": {
@@ -58,9 +58,9 @@ data: [
       "donorPhone": 2675555555,
       "donorLocation": {
         "lat": 39.747478,
-        "lng": -75.556412,
+        "lng": -75.556412
       },
-      "instructions":
+      "instructions": ""
     },
     "destination": {
       "destinationid": 101,

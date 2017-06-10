@@ -1,5 +1,13 @@
 data: [
   {
+    "id": 0,
+    "username": "shawn",
+    "password": "number1vol",
+    "name": "Shawn",
+    "phone": 2675555555,
+    "email": "none.of.ya.business@gmail.com"
+  },
+  {
     "id": 1,
     "username": "dan_zf",
     "password": "number1vol",

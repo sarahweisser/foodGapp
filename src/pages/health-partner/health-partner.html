@@ -1,0 +1,33 @@
+<ion-header class="header">
+
+  <ion-navbar class="navBar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> <img class="titleImg" src="assets/img/foodbank-logo.png"></ion-title>
+
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="progressContent" padding>
+
+
+  <ion-card-content id="driverinfo">
+    <div class="thanks">A Delivery is on the way!</div>
+ 
+<div id="mapSpacing"></div>
+
+  <p>The volunteer</p>
+  <p> Shawn</p>
+  <p>will be here in </p>
+  <p>32 mins</p>
+    </ion-card-content>
+
+  
+  <div #map id="map"></div>
+
+  <button class="donorProgress" ion-button (click)='callDriver()'>Contact Driver</button>
+</ion-content>

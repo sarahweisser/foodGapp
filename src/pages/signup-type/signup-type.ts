@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostPage } from '../post/post';
 import { VolStartScreenPage } from '../vol-start-screen/vol-start-screen';
+import { SetAvailabilityPage } from '../set-availability/set-availability';
 
 /**
  * Generated class for the SignupTypePage page.
@@ -18,6 +19,7 @@ export class SignupTypePage {
 
   postPage = PostPage;
   volStart = VolStartScreenPage;
+  setAvailabilityPage = SetAvailabilityPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -37,25 +39,27 @@ export class SignupTypePage {
     {
       this.navCtrl.push(PostPage);
     }
-    else if(this.donate)
+    else if(this.acceptDonate)
     {
-      this.navCtrl.push(PostPage)
+      this.navCtrl.push(SetAvailabilityPage);
     }
   }
 
   volunteerTrue(){
     this.volunteer =true;
+    this.donate = false;
+    this.acceptDonate=false;
   }
 
   donateTrue(){
     this.donate =true;
+    this.volunteer = false;
+    this.acceptDonate=false;
   }
   partnerTrue(){
     this.acceptDonate=true;
+    this.volunteer = false;
+    this.donate = false;
   }
-
-
-
-
 
 }

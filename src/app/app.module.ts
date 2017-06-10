@@ -22,10 +22,17 @@ import { WaypointMap2Page } from '../pages/waypoint-map2/waypoint-map2';
 import { PopupInfoWindowPage } from '../pages/popup-info-window/popup-info-window';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { SignupTypePage } from '../pages/signup-type/signup-type';
+
 import { MapComponent } from '../components/map/map.component';
+import { SetAvailabilityPage } from '../pages/set-availability/set-availability';
+import { HealthPartnerPage } from '../pages/health-partner/health-partner';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AgmCoreModule } from 'angular2-google-maps/core';
+import { AuthServiceProvider } from '../app/services/auth-service';
+
+import { PickupService } from '../app/services/pickup.service';
 
 @NgModule({
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -45,7 +52,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     WayPointMapPage,
     WaypointMap2Page,
     SignupTypePage,
-    MapComponent
+    MapComponent,
+    SetAvailabilityPage,
+    HealthPartnerPage,
+    SignupTypePage
   ],
   imports: [
     BrowserModule,
@@ -68,6 +78,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PopupInfoWindowPage,
     WayPointMapPage,
     WaypointMap2Page,
+    SignupTypePage,
+    SetAvailabilityPage,
+    HealthPartnerPage,
     SignupTypePage
 
   ],
@@ -79,7 +92,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GoogleMaps,
     SplashScreen,
     Deeplinks,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    PickupService,
+
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    LaunchNavigator, 
+    AuthServiceProvider
   ]
 })
 export class AppModule { }

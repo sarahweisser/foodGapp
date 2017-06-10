@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { WayPointMapPage } from '../way-point-map/way-point-map';
-import { HomePage } from '../home/home';
 
 /**
  * Generated class for the PopupInfoWindowPage page.
@@ -48,7 +47,6 @@ export class PopupInfoWindowPage {
       perishable:this.perishable,
     location:this.location});
   }
-
 
 
 

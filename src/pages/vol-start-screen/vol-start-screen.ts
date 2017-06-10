@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, PopoverController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, PopoverController, Events, LoadingController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HomePage } from '../home/home';
 import { PopupInfoWindowPage } from '../popup-info-window/popup-info-window';
@@ -9,6 +9,7 @@ import { NgZone } from '@angular/core';
 import 'rxjs/add/operator/map';
 // import {Page} from 'ionic/ionic';
 import { DataService } from '../../app/services/data.service';
+
 
 export class TestPage {
   constructor(data: DataService) {
@@ -32,7 +33,7 @@ export class VolStartScreenPage {
   @ViewChild('map') mapContainer: any;
   map: any;
   infoWindows: any;
-  // position:any;
+  loader: any;
 
   constructor(public navCtrl: NavController,
     private http: Http,
@@ -42,33 +43,46 @@ export class VolStartScreenPage {
     public popoverCtrl: PopoverController,
     public events: Events,
     public data: DataService,
+    public loadingCtrl: LoadingController,
     private deeplinks: Deeplinks) {
     this.infoWindows = [];
   }
 
   ionViewWillEnter() {
+    this.loader = this.getLoader();
+    this.loader.present();
     this.displayGoogleMap();
+
+
   }
 
 
+  getLoader() {
+    let loader = this.loadingCtrl.create({
+      content: "Loading. . ."
+    });
+    return loader;
+  }
+
   displayGoogleMap() {
     this.geolocation.getCurrentPosition().then(position => {
-
+      this.loader.dismiss();
       let zipCode = new google.maps.LatLng(39.749391, -75.561390);
-      // let home = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      // let current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
         center: zipCode,
+        disableDefaultUI: true,
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-      } 
-
-      this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
-
-      this.myMarker(zipCode);
-      const markers = function () {
-        this.getMarkers();
       }
 
+      this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
+      this.myMarker(zipCode);
+
+      const markers = function () {
+        this.getMarkers();
+        this.loader.dismiss();
+      }
       setTimeout(markers.bind(this), 1000);
 
     }).catch((error) => {
@@ -77,12 +91,21 @@ export class VolStartScreenPage {
 
 
 
+
   }
   myMarker(position) {
     //var position = new google.maps.LatLng(marker.latitude, marker.longitude);
+  //   var image = {
+  //   url: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+  //       new google.maps.Size(22, 22),
+  //       new google.maps.Point(0, 18),
+  //       new google.maps.Point(11, 11)),
+
+  // };
     var currentPositionIcon = new google.maps.Marker({
+      optimized: false,
       position: position,
-      icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+      icon: new google.maps.MarkerImage('assets/img/mobileimgs2.png',
         new google.maps.Size(22, 22),
         new google.maps.Point(0, 18),
         new google.maps.Point(11, 11))
@@ -90,10 +113,10 @@ export class VolStartScreenPage {
     currentPositionIcon.setMap(this.map);
 
   }
-
+ 
   getMarkers() {
 
-    this.http.get('../../assets/data/markers.json')
+    this.http.get('assets/data/markers.json')
       .map((res) => res.json())
       .subscribe(data => {
         this.addMarkersToMap(data);
@@ -102,39 +125,18 @@ export class VolStartScreenPage {
   }
 
 
+
   markerInfo(marker) {
 
-    // var infoWindowContent = '<div id="restaurantMapDiv"><h1 id="header" class="header">' + marker.title + '</h1></div>' +
-    //   '<a href="https://www.google.com">Hello</a><button ion-button round>Click me </button>';
-    // var infoWindow = new google.maps.InfoWindow({
-    //   content: infoWindowContent
-    // });
-    //console.log("asdasdhgfhdfgjdfj "+marker.latitude);
     marker.addListener('click', () => {
       var position = new google.maps.LatLng(marker.latitude, marker.longitude);
-    
-     console.log("asdfasdfas "+position);
-     console.log("iknew it"+ marker.latitude);
-
-
       let popover = this.popoverCtrl.create(PopupInfoWindowPage, { marker: marker, position: position });
       popover.present({
 
       });
-      // console.log(marker.title);
-
-      // this.events.publish('user:created',marker.title);
-
-      // this.navCtrl.push(PopupInfoWindowPage, {
-      //   param1: 'John', param2: 'Johnson'
-      // });
-      // console.log(marker.title);
-
-      // this.navCtrl.push(HomePage)
-      //this.closeAllInfoWindows();
-      // infoWindow.open(this.map, marker);
+      popover.dismiss
     });
-    // this.infoWindows.push(infoWindow);
+
   }
 
 
@@ -148,8 +150,8 @@ export class VolStartScreenPage {
         title: marker.name,
         quantity: marker.quantity,
         perishable: marker.perishable,
-        latitude:marker.latitude,
-        longitude:marker.longitude,
+        latitude: marker.latitude,
+        longitude: marker.longitude,
         animation: google.maps.Animation.DROP
       });
       restaurantMarkerClick.setMap(this.map);
@@ -157,6 +159,4 @@ export class VolStartScreenPage {
     }
   }
 
-
- 
 }

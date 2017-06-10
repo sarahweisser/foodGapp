@@ -1,18 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-// import { Location } from '../../shared/location';
-// import { SignupPage } from '../signup/signup';
 import { WaypointMap2Page } from '../waypoint-map2/waypoint-map2';
 import { MapComponent } from '../../components/map/map.component';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { PickupService } from '../../app/services/pickup.service';
 
 declare var google: any;
-/**
- * Generated class for the WayPointMapPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -44,10 +37,9 @@ export class WayPointMapPage {
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
               private launchNavigator: LaunchNavigator, 
-              private mapComponent: MapComponent) {
-
+              private mapComponent: MapComponent, 
+              private pickupService: PickupService) {
   }
-
 
   navigate(start, end) {
     let options: LaunchNavigatorOptions = {
@@ -65,8 +57,7 @@ export class WayPointMapPage {
     // navigate from current location to pickup
     this.navCtrl.push(WaypointMap2Page)
     this.navigate('Philadelphia, PA', 'Baltimore, MD');
-   
-    
+     
   }
 
   pickupConfirmed() {
@@ -76,9 +67,12 @@ export class WayPointMapPage {
     this.navigate('Wilmington, DE', 'Philadelphia, PA')
   }
 
-
-
   ionViewDidLoad() {
     this.mapComponent;
+    
+    navigator.geolocation.getCurrentPosition((position) => {
+      let pickups = this.pickupService.getPickupsForVolunteer(position.coords.latitude, position.coords.longitude);
+      console.log(pickups);
+    })
   }
 }

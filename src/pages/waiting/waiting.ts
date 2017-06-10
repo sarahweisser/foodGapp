@@ -9,10 +9,10 @@ import { SignupTypePage } from '../signup-type/signup-type';
  */
 @IonicPage()
 @Component({
-  selector: 'page-pending',
-  templateUrl: 'pending.html',
+  selector: 'page-waiting',
+  templateUrl: 'waiting.html',
 })
-export class PendingPage {
+export class WaitingPage {
   
   signupTypePage = SignupTypePage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -22,7 +22,7 @@ export class PendingPage {
     this.navCtrl.popToRoot();
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PendingPage');
+    console.log('ionViewDidLoad WaitingPage');
   }
 
 }

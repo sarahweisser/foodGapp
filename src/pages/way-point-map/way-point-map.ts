@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, SimpleChanges } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { WaypointMap2Page } from '../waypoint-map2/waypoint-map2';
 import { MapComponent } from '../../components/map/map.component';
@@ -22,16 +22,21 @@ export class WayPointMapPage {
   buttonText: string = 'Accept';
   buttonHandler: Function = this.confirm;
 
-  currentLocation: Object = new google.maps.LatLng(39.7472871, -75.54704149999999);
-  pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
-  dropOffLocation: Object = new google.maps.LatLng(39.77, -75.5570417);
+  // currentLocation: Object = new google.maps.LatLng(39.7472871, -75.54704149999999);
+  // pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
+  // dropOffLocation: Object = new google.maps.LatLng(39.77, -75.5570417);
+  pickup: any;
+  currentLocation: [0,0];
+  pickupLocation: [0,0];
+  dropOffLocation: [0,0];
   zoom: number = 13;
   loader: any;
   // lat: number;
   // lng: number;
   confirmed: boolean = false;
-  payload: string = this.navParams.get('quantity');
-  locationName: string = this.navParams.get('title');
+  payload: string;
+  locationName: string;
+  phone: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -67,14 +72,34 @@ export class WayPointMapPage {
     this.navigate('Wilmington, DE', 'Philadelphia, PA')
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['pickup']) {
+        this.payload = this.pickup.quantity;
+        this.locationName = this.pickup.destination.destinationName;
+        this.phone = this.pickup.destination.destinationPhone;
+        this.mapComponent;
+    }
+  }
+
   ionViewDidLoad() {
-    this.mapComponent;
-    
+    this.mapComponent
     navigator.geolocation.getCurrentPosition((position) => {
 
-      let pickups = this.pickupService.retrieveData((data) => {
-            console.log("PICKUPS")
-      console.log(data);
+      this.pickupService.retrieveData((data) => {
+        this.pickup = data[0];
+        console.log(this.pickup)
+        this.currentLocation = new google.maps.LatLng(
+          position.coords.latitude,
+          position.coords.longitude
+        );
+        this.pickupLocation = new google.maps.LatLng(
+          this.pickup.destination.destinationLocation.lat,
+          this.pickup.destination.destinationLocation.lng
+        );
+        this.dropOffLocation = new google.maps.LatLng(39.77, -75.5570417);
+        console.log(this.pickupLocation);
+        console.log(this.dropOffLocation);
+        //this.mapComponent;
       });
   
     })

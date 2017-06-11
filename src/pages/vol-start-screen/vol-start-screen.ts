@@ -80,7 +80,7 @@ export class VolStartScreenPage {
 
       const markers = function () {
         this.getMarkers();
-        this.loader.dismiss();
+        // this.loader.dismiss();
       }
       setTimeout(markers.bind(this), 1000);
 

@@ -8,10 +8,11 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 import { NgZone } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { DataService } from '../../app/services/data.service';
+import { PickupService } from '../../app/services/pickup.service';
 
 
 export class TestPage {
-  constructor(data: DataService) {
+  constructor(data: PickupService) {
     data.retrieveData()
   }
 }
@@ -23,7 +24,7 @@ declare var google;
 @IonicPage()
 
 @Component({
-  providers: [DataService],
+  providers: [DataService, PickupService],
   selector: 'page-vol-start-screen',
   templateUrl: 'vol-start-screen.html',
 })
@@ -33,6 +34,7 @@ export class VolStartScreenPage {
   map: any;
   infoWindows: any;
   loader: any;
+  public info: any;
 
   constructor(public navCtrl: NavController,
     private http: Http,
@@ -42,10 +44,18 @@ export class VolStartScreenPage {
     public popoverCtrl: PopoverController,
     public events: Events,
     public data: DataService,
+    public pickupService:PickupService,
     public loadingCtrl: LoadingController,
     private deeplinks: Deeplinks) {
     this.infoWindows = [];
   }
+
+loadPeople(){
+  this.pickupService.retrieveData()
+  .then(data => {
+    this.info = data;
+  });
+}
 
   ionViewWillEnter() {
     this.loader = this.getLoader();
@@ -95,10 +105,10 @@ export class VolStartScreenPage {
   myMarker(position) {
     //var position = new google.maps.LatLng(marker.latitude, marker.longitude);
     var image = {
-    icon: new google.maps.MarkerImage('assets/img/ball2.gif'),
-     size: new google.maps.Size(10, 8),
- 
-  };
+      icon: new google.maps.MarkerImage('assets/img/ball2.gif'),
+      size: new google.maps.Size(10, 8),
+
+    };
     var currentPositionIcon = new google.maps.Marker({
       optimized: false,
       position: position,
@@ -107,10 +117,10 @@ export class VolStartScreenPage {
     currentPositionIcon.setMap(this.map);
 
   }
- 
+
   getMarkers() {
 
-    this.http.get('assets/data/markers.json')
+    this.http.get('assets/data/pickups.json')
       .map((res) => res.json())
       .subscribe(data => {
         this.addMarkersToMap(data);

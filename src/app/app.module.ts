@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { Push, PushObject, PushOptions } from "@ionic-native/push";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -30,15 +31,14 @@ import { HealthPartnerPage } from '../pages/health-partner/health-partner';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AgmCoreModule } from 'angular2-google-maps/core';
-import { AuthServiceProvider } from '../app/services/auth-service';
+import { AuthService } from '../app/services/auth-service';
 
 import { PickupService } from '../app/services/pickup.service';
 
 @NgModule({
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     MyApp,
-    HomePage,
     ListPage,
     PendingPage,
     WaitingPage,
@@ -65,7 +65,6 @@ import { PickupService } from '../app/services/pickup.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage,
     PendingPage,
     WaitingPage,
@@ -95,8 +94,8 @@ import { PickupService } from '../app/services/pickup.service';
     PickupService,
 
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    LaunchNavigator, 
-    AuthServiceProvider
+    LaunchNavigator,
+    AuthService
   ]
 })
 export class AppModule { }

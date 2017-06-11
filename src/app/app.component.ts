@@ -23,6 +23,7 @@ export class MyApp {
 
   rootPage: any = WayPointMapPage;
 
+
   //rootPage: any = SignupTypePage;
   pages: Array<{title: string, component: any}>;
 

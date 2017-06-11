@@ -11,10 +11,11 @@ export class PickupService {
     this.data = null;
   }
 
-  retrieveData() {
+  retrieveData(callback) {
     this.http.get('../../assets/data/pickups.json')
+  
     .subscribe(data => {
-      this.data = data;
+      callback(data.json())
     });
   }
 
@@ -36,15 +37,20 @@ export class PickupService {
   }
 
   getPickupsForVolunteer(lat: number, lng: number) {
-    this.retrieveData();
-    return this.data.filter((item) => item["status"] === "open"
-      && this.findDistance(item["donor"]["location"]["lat"],
-        item["donor"]["location"]["lng"], lat, lng) <= 15)
+    this.retrieveData((data) => {
+      console.log(data)
+        return data.filter((item) => item["status"] === "open"
+            && this.findDistance(item.donor.donorLocation.lat,
+              item.donor.donorLocation.lng, lat, lng) <= 15)
+    });
+
   }
 
   getPickupByPickupid(pickupid: number) {
-    this.retrieveData();
-    return this.data.filter((item) => item["pickupid"] === pickupid);
+    this.retrieveData((data) => {
+      return data.filter((item) => item["pickupid"] === pickupid);
+    });
+    
   }
 
   getNumberOfPickupsByUserid(userid: number) {

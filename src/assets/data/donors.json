@@ -1,4 +1,4 @@
-data: [
+[
   {
     "donorid": 11,
     "donorName": "Chipotle",
@@ -16,8 +16,7 @@ data: [
     "donorLocation": {
       "lat": 39.747478,
       "lng": -75.556412,
-    },
     "donorPhone": 2675555555
   }
-
+  }
 ]

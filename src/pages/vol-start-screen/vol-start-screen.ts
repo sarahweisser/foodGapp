@@ -7,15 +7,8 @@ import { Http } from '@angular/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { NgZone } from '@angular/core';
 import 'rxjs/add/operator/map';
-// import {Page} from 'ionic/ionic';
 import { DataService } from '../../app/services/data.service';
-
-
-export class TestPage {
-  constructor(data: DataService) {
-    data.retrieveData()
-  }
-}
+import { PickupService } from '../../app/services/pickup.service';
 
 
 declare var google;
@@ -24,7 +17,7 @@ declare var google;
 @IonicPage()
 
 @Component({
-  providers: [DataService],
+  providers: [DataService, PickupService],
   selector: 'page-vol-start-screen',
   templateUrl: 'vol-start-screen.html',
 })
@@ -34,6 +27,7 @@ export class VolStartScreenPage {
   map: any;
   infoWindows: any;
   loader: any;
+  public info: any;
 
   constructor(public navCtrl: NavController,
     private http: Http,
@@ -43,15 +37,20 @@ export class VolStartScreenPage {
     public popoverCtrl: PopoverController,
     public events: Events,
     public data: DataService,
+    public pickupService: PickupService,
     public loadingCtrl: LoadingController,
     private deeplinks: Deeplinks) {
     this.infoWindows = [];
   }
 
+
+
+
   ionViewWillEnter() {
     this.loader = this.getLoader();
     this.loader.present();
     this.displayGoogleMap();
+    this.loadPeople();
 
 
   }
@@ -67,7 +66,7 @@ export class VolStartScreenPage {
   displayGoogleMap() {
     this.geolocation.getCurrentPosition().then(position => {
       this.loader.dismiss();
-      let zipCode = new google.maps.LatLng(39.749391, -75.561390);
+      let zipCode = new google.maps.LatLng( 39.746323, -75.563192);
       // let current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
         center: zipCode,
@@ -95,33 +94,39 @@ export class VolStartScreenPage {
   }
   myMarker(position) {
     //var position = new google.maps.LatLng(marker.latitude, marker.longitude);
-  //   var image = {
-  //   url: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-  //       new google.maps.Size(22, 22),
-  //       new google.maps.Point(0, 18),
-  //       new google.maps.Point(11, 11)),
+    var image = {
+      icon: new google.maps.MarkerImage('assets/img/ball4.gif'),
+      size: new google.maps.Size(10, 8),
 
-  // };
+    };
     var currentPositionIcon = new google.maps.Marker({
       optimized: false,
       position: position,
-      icon: new google.maps.MarkerImage('assets/img/mobileimgs2.png',
-        new google.maps.Size(22, 22),
-        new google.maps.Point(0, 18),
-        new google.maps.Point(11, 11))
+      icon: image.icon
     });
     currentPositionIcon.setMap(this.map);
 
   }
- 
+
   getMarkers() {
 
-    this.http.get('assets/data/markers.json')
+    this.http.get('assets/data/pickups.json')
       .map((res) => res.json())
       .subscribe(data => {
         this.addMarkersToMap(data);
       });
 
+  }
+
+  loadPeople() {
+    // this.pickupService.retrieveData((data) => {
+    //   this.addMarkersToMap(data);
+    // });
+
+    // this.pickupService.retrieveData(this.data)
+    // .then(data => {
+    //   this.info = data;
+    // });
   }
 
 
@@ -134,7 +139,7 @@ export class VolStartScreenPage {
       popover.present({
 
       });
-      popover.dismiss
+      
     });
 
   }
@@ -142,21 +147,34 @@ export class VolStartScreenPage {
 
 
   addMarkersToMap(markers) {
-    for (let marker of markers) {
 
-      var position = new google.maps.LatLng(marker.latitude, marker.longitude);
+    for (let marker of markers) {
+      console.log(marker);
+      console.log();
+      // var position2 = new google.maps.LatLng(marker.latitude, marker.longitude);
+      var position = new google.maps.LatLng(marker.donor.donorLocation.lat, marker.donor.donorLocation.lng);
+    console.log(position)
       var restaurantMarkerClick = new google.maps.Marker({
         position: position,
-        title: marker.name,
+        title: marker.donor.donorName,
         quantity: marker.quantity,
-        perishable: marker.perishable,
+        perishable: marker.isPerishable,
         latitude: marker.latitude,
+        pickupId:marker.donor.pickupid,
         longitude: marker.longitude,
         animation: google.maps.Animation.DROP
       });
+
+      console.log();
       restaurantMarkerClick.setMap(this.map);
       this.markerInfo(restaurantMarkerClick);
+
+
     }
   }
+
+
+
+
 
 }

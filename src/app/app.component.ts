@@ -21,7 +21,7 @@ import { HealthPartnerPage } from '../pages/health-partner/health-partner';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = WayPointMapPage;
+  rootPage: any = VolStartScreenPage;
 
 
   //rootPage: any = SignupTypePage;

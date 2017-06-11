@@ -98,8 +98,8 @@
             "ANDROID_PATH_PREFIX": "/"
         },
          "platforms": [
--            "android",
--            "ios"
--        ]
+          "android",
+            "ios"
+        ]
     }
 }

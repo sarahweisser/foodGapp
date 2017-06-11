@@ -26,17 +26,24 @@ export class WayPointMapPage {
   // pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
   // dropOffLocation: Object = new google.maps.LatLng(39.77, -75.5570417);
   pickup: any;
-  currentLocation: [0,0];
-  pickupLocation: [0,0];
-  dropOffLocation: [0,0];
+  // currentLocation: any;
+  // pickupLocation: any;
+  // dropOffLocation: any;
+  currentLocation: Object = new google.maps.LatLng(39.7472871, -75.54704149999999);
+  pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
+  dropOffLocation: Object = new google.maps.LatLng(39.77, -75.5570417);
+
+  quantity: any;
+  perishable: any;
+  phone: any;
+  location: any;
+
   zoom: number = 13;
   loader: any;
-  // lat: number;
-  // lng: number;
+
   confirmed: boolean = false;
   payload: string;
   locationName: string;
-  phone: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -44,6 +51,17 @@ export class WayPointMapPage {
               private launchNavigator: LaunchNavigator, 
               private mapComponent: MapComponent, 
               private pickupService: PickupService) {
+
+
+    this.quantity = this.navParams.get('quantity');
+    this.perishable = this.navParams.get('perishable');
+    this.phone = this.navParams.get('phone');
+    //this.pickupLocation = this.navParams.get('location');
+    //this.dropOffLocation = new google.maps.LatLng(39.77, -75.5570417);
+    console.log("THIS PICKUPLOCATION")
+    console.log(typeof this.pickupLocation)
+    
+              
   }
 
   navigate(start, end) {
@@ -72,35 +90,45 @@ export class WayPointMapPage {
     this.navigate('Wilmington, DE', 'Philadelphia, PA')
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['pickup']) {
-        this.payload = this.pickup.quantity;
-        this.locationName = this.pickup.destination.destinationName;
-        this.phone = this.pickup.destination.destinationPhone;
-        this.mapComponent;
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes['pickup']) {
+  //       this.payload = this.pickup.quantity;
+  //       this.locationName = this.pickup.destination.destinationName;
+  //       this.phone = this.pickup.destination.destinationPhone;
+  //       this.mapComponent;
+  //   }
+  // }
 
   ionViewDidLoad() {
-    this.mapComponent
+    
     navigator.geolocation.getCurrentPosition((position) => {
-
-      this.pickupService.retrieveData((data) => {
-        this.pickup = data[0];
-        console.log(this.pickup)
-        this.currentLocation = new google.maps.LatLng(
+      this.currentLocation = new google.maps.LatLng(
           position.coords.latitude,
           position.coords.longitude
         );
-        this.pickupLocation = new google.maps.LatLng(
-          this.pickup.destination.destinationLocation.lat,
-          this.pickup.destination.destinationLocation.lng
-        );
-        this.dropOffLocation = new google.maps.LatLng(39.77, -75.5570417);
-        console.log(this.pickupLocation);
-        console.log(this.dropOffLocation);
-        //this.mapComponent;
-      });
+
+
+        this.mapComponent
+        
+
+
+
+      // this.pickupService.retrieveData((data) => {
+      //   this.pickup = data[0];
+      //   console.log(this.pickup)
+      //   this.currentLocation = new google.maps.LatLng(
+      //     position.coords.latitude,
+      //     position.coords.longitude
+      //   );
+      //   this.pickupLocation = new google.maps.LatLng(
+      //     this.pickup.destination.destinationLocation.lat,
+      //     this.pickup.destination.destinationLocation.lng
+      //   );
+      //   this.dropOffLocation = new google.maps.LatLng(39.77, -75.5570417);
+      //   console.log(this.pickupLocation);
+      //   console.log(this.dropOffLocation);
+      //   //this.mapComponent;
+      // });
   
     })
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 
 /*
   Generated class for the AuthServiceProvider provider.
@@ -15,35 +16,61 @@ export class User {
   email: string;
   phone: string;
 
-  constructor(fname: string,lname: string, email: string) {
+  constructor(fname: string, lname: string, email: string, phone: string) {
     this.fname = fname;
-    this.lname = lname;
+    this.phone = phone;
     this.email = email;
+    this.lname = lname;
   }
 }
 
 @Injectable()
 export class AuthService {
   currentUser: User;
+  data: any;
 
   constructor(public http: Http) {
     console.log('Hello AuthServiceProvider Provider');
   }
 
+  public checkAcess(credentials)
+  {
+    let bool = false;
+    this.http.get('../../assets/data/users.json')
+    .map((response) => response.json())
+    .subscribe((data) => {
+      for(let user of data)
+      {
+        if(user.email === credentials.email && user.password === credentials.password)
+        {
+            console.log(user.fname);
+            this.currentUser = new User(user.fname, user.lname, user.email, user.phone);
+            bool = true;
+        }
+      }
+    },(err)=>{
+      console.log(err);
+    });
+    return bool; 
+  }
+
   public login(credentials) {
-    if (credentials.email === null || credentials.password === null) {
+
+    if (credentials.email === null || credentials.password === null)
+    {
       return Observable.throw("Please insert credentials");
     } else {
-      return Observable.create(observer => {//check backend
-
-
-        let access = (credentials.password === "pass" && credentials.email === "email");
-        this.currentUser = new User('Admin','Creator' ,'foodgapp@zipcode.com');
+      return Observable.create(observer => {
+        let permission = this.checkAcess(credentials);
+        let access = (permission);
         observer.next(access);
         observer.complete();
       });
     }
   }
+
+
+
   public register(credentials)
   {
      if (credentials.email === null || credentials.password === null)

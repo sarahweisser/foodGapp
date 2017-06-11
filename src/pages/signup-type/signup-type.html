@@ -5,16 +5,23 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="greener">
+  <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Let's Get Started</ion-title>
+    <ion-title> <img class="titleImg" src="assets/img/foodbank-logo.png"></ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
+  <h3>Welcome inside, {{username}}!</h3>
+  Your Email is: {{email}}
 
   <div padding align="center">
     <h6>What Do You Want To Do</h6>
@@ -23,11 +30,12 @@
   <ion-list radio-group>
     <ion-item>
       <ion-label>Volunteer</ion-label>
-      <ion-radio (click)="volunteerTrue()" checked></ion-radio>
+      <ion-radio (click)="volunteerTrue()" ></ion-radio>
     </ion-item>
     <ion-item>
       <ion-label>Donate</ion-label>
       <ion-radio (click)="donateTrue()"></ion-radio>
+
     </ion-item>
     <ion-item>
       <ion-label>Food Relief Partner</ion-label>

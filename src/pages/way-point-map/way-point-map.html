@@ -12,21 +12,21 @@
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>  
-    <div #map id="map"></div> 
+    <!--<div #map id="map"></div> -->
+    <map-component [destination]="dropOffLocation" [waypoint]="pickupLocation"></map-component>
 
   <ion-card-content>
     <div [hidden]="!confirmed" #directionsPanel></div>
   </ion-card-content>
 <div [hidden]="confirmed" id="pickupDetails">
-  <p>Payload: </p>
-  <p>Pickup Address: </p>
-  <p>Pickup Phone: </p>
+  <p> {{ locationName }} </p>
+  <p>Payload:{{ payload }} </p>
+  <p>Pickup Address: {{ address }}</p>
+  <p>Pickup Phone: {{phone }}</p>
 </div>
 
-  <button ion-button (click)='confirm();'>{{ buttonText }}</button>
+  <button ion-button (click)='confirm()'>{{ buttonText }}</button>
 
 
 </ion-content>

@@ -5,14 +5,28 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>pendingPage</ion-title>
+  <ion-navbar color="greener">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>FoodGapp</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <div padding align="center">
+    <h1>Your pickup has been posted!</h1>
+  </div>
+  <div padding align="center">
+    <h2>Contacting volunteers to drive pick up...</h2>
+  </div>
+  
+  <div padding align="center">
+    <img src="https://foodbankofde.files.wordpress.com/2011/11/007.jpg" img style="border:4px solid black"/>
+  </div>
+  <div padding align="center">
+    <button ion-button (click)="goBackHome()">Cancel Pickup</button>
+  </div>
 </ion-content>

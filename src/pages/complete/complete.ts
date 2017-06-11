@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SignupTypePage } from '../signup-type/signup-type';
 
 /**
  * Generated class for the CompletePage page.
@@ -14,9 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CompletePage {
 
+  signupTypePage = SignupTypePage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  goBackHome() {
+    this.navCtrl.setRoot(this.signupTypePage);
+    this.navCtrl.popToRoot();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad CompletePage');
   }

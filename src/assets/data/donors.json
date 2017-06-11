@@ -1,0 +1,22 @@
+[
+  {
+    "donorid": 11,
+    "donorName": "Chipotle",
+    "donorAddress": "Chipotle address",
+    "donorLocation": {
+      "lat": 39.749391,
+      "lng": -75.561390,
+    },
+    "donorPhone": 2675555555
+  },
+  {
+    "donorid": 12,
+    "donorName": "Ol'Buddy's Fish and Chips",
+    "donorAddress": "Buddy's address",
+    "donorLocation": {
+      "lat": 39.747478,
+      "lng": -75.556412,
+    "donorPhone": 2675555555
+  }
+  }
+]

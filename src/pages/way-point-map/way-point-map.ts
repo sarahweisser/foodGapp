@@ -1,15 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { Location } from '../../shared/location';
+import { WaypointMap2Page } from '../waypoint-map2/waypoint-map2';
+import { MapComponent } from '../../components/map/map.component';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { PickupService } from '../../app/services/pickup.service';
 
 declare var google: any;
-/**
- * Generated class for the WayPointMapPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,102 +16,67 @@ export class WayPointMapPage {
 
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionsPanel: ElementRef;
-  map: any;
+  //map: any;
 
   title: string = 'Pickup Details';
   buttonText: string = 'Accept';
+  buttonHandler: Function = this.confirm;
 
-  currentLocation:any;
-  pickupLocation: any;
-  dropOffLocation: Location;
+  currentLocation: Object = new google.maps.LatLng(39.7472871, -75.54704149999999);
+  pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
+  dropOffLocation: Object = new google.maps.LatLng(39.77, -75.5570417);
   zoom: number = 13;
   loader: any;
-  lat: number;
-  lng: number;
+  // lat: number;
+  // lng: number;
   confirmed: boolean = false;
+  payload: string = this.navParams.get('quantity');
+  locationName: string = this.navParams.get('title');
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
-              private launchNavigator: LaunchNavigator) {
-
-
-
+              private launchNavigator: LaunchNavigator, 
+              private mapComponent: MapComponent, 
+              private pickupService: PickupService) {
   }
 
-  getLoader() {
-    let loader = this.loadingCtrl.create({
-      content: "Loading. . ."
-    });
-    return loader;
+  navigate(start, end) {
+    let options: LaunchNavigatorOptions = {
+        start: start
+    };
+    
+    this.launchNavigator.navigate(end, options)
+      .then(
+        success => console.log('Launched navigator'),
+        error => console.log('Error launching navigator', error)
+      );
   }
 
   confirm() {
-    let options: LaunchNavigatorOptions = {
-  start: 'London, ON'
-};
-
-this.launchNavigator.navigate('Toronto, ON', options)
-  .then(
-    success => console.log('Launched navigator'),
-    error => console.log('Error launching navigator', error)
-  );
-
-    // this.confirmed = true;
-    // this.buttonText = 'Dropoff Complete!'
+    // navigate from current location to pickup
+    this.navCtrl.push(WaypointMap2Page)
+    this.navigate('Philadelphia, PA', 'Baltimore, MD');
+     
   }
 
-  loadMap() {
-    let LatLng = new google.maps.LatLng(39.7472871, -75.54704149999999);
+  pickupConfirmed() {
+    //TODO: update pickup object to indicate the pickup was successfully made
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position);
-      })
-    }
-
-    let mapOptions = {
-      center: LatLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    // navigate to dropoff location
+    this.navigate('Wilmington, DE', 'Philadelphia, PA')
   }
-
-  startNavigating() {
-      let directionsService = new google.maps.DirectionsService;
-      let directionsDisplay = new google.maps.DirectionsRenderer;
-
-      directionsDisplay.setMap(this.map);
-      directionsDisplay.setPanel(this.directionsPanel.nativeElement);
-
-      directionsService.route({
-        origin: new google.maps.LatLng(39.7472871, -75.54704149999999),
-        destination: new google.maps.LatLng(39.7472879, -75.3),
-        waypoints: [{
-          location: new google.maps.LatLng(39.7472871, -75.4),
-          stopover: true
-
-        }],
-        travelMode: google.maps.TravelMode['DRIVING']
-      }, (res, status) => {
-          if (status == google.maps.DirectionsStatus.OK) {
-            directionsDisplay.setDirections(res);
-            this.loader.dismiss();
-          } else {
-            console.warn(status);
-          }
-      })
-  }
-
-
 
   ionViewDidLoad() {
-    this.loader = this.getLoader();
-    this.loader.present();
+    this.mapComponent;
+    
+    navigator.geolocation.getCurrentPosition((position) => {
 
-    this.loadMap();
-    this.startNavigating();
-}
+      let pickups = this.pickupService.retrieveData((data) => {
+            console.log("PICKUPS")
+      console.log(data);
+      });
+  
+    })
   }
+}

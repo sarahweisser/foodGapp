@@ -97,8 +97,8 @@
             "DEEPLINK_HOST": "example.com",
             "ANDROID_PATH_PREFIX": "/"
         },
-         "platforms": [
-          "android",
+        "platforms": [
+            "android",
             "ios"
         ]
     }

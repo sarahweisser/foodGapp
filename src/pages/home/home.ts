@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, Loading, LoadingController, NavParams, AlertController} from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { SignupTypePage } from '../signup-type/signup-type';
-import { AuthServiceProvider } from '../../app/services/auth-service';
+import { AuthService } from '../../app/services/auth-service';
 
 
 @Component({
@@ -13,40 +13,42 @@ import { AuthServiceProvider } from '../../app/services/auth-service';
 })
 
 export class HomePage {
-signupPage: SignupPage;
-signupTypePage: SignupTypePage;
 loading: Loading;
 registerCredentials = {email: '', password: ''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider,
-  private alertCtrl: AlertController, private loadingCtrl: LoadingController){}
+constructor(private navCtrl: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController){}
+
+ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+  }
 
   public createAccount(){
       this.navCtrl.push(SignupPage);
   }
 
-  public login(){
-    this.showLoading();
+  public login() {
+    this.showLoading()
     this.auth.login(this.registerCredentials).subscribe(allowed => {
-        if(allowed){
-          this.navCtrl.setRoot(SignupTypePage);
-        }else {
+      if (allowed) {
+        this.navCtrl.setRoot(SignupTypePage);
+      } else {
         this.showError("Access Denied");
-        }
+      }
     },
-    error =>{
-      this.showError(error);
-    });
+      error => {
+        this.showError(error);
+      });
   }
 
-  showLoading(){
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait..',
-      dismissOnPageChange: true
-    })
-  }
+  showLoading() {
+      this.loading = this.loadingCtrl.create({
+        content: 'Please wait...',
+        dismissOnPageChange: true
+      });
+      this.loading.present();
+    }
 
-  showError(text){
+    showError(text) {
     this.loading.dismiss();
 
     let alert = this.alertCtrl.create({

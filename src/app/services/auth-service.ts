@@ -10,64 +10,69 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 export class User {
-  name: string;
+  fname: string;
+  lname: string;
   email: string;
+  phone: string;
 
-  constructor(name: string, email: string){
-    this.name = name;
+  constructor(fname: string,lname: string, email: string) {
+    this.fname = fname;
+    this.lname = lname;
     this.email = email;
   }
 }
 
-
 @Injectable()
-export class AuthServiceProvider {
+export class AuthService {
   currentUser: User;
-
-  public login(credentials){
-    if(credentials.email === null || credentials.password === null){
-      return Observable.throw("Not going to login myself");
-    }
-     else
-     {
-       return Observable.create(observer => { //make a request to backend to make real time check
-         let access = (credentials.password === "radiojulius" && credentials.email ==="foodGapp@zipcode.com");
-         this.currentUser = new User("Paco", "pacalps23@frontier.com");
-         observer.next(access);
-         observer.complete();
-       });
-     }
-  }
-
-  public register(credentials)
-  {
-    if(credentials.email === null || credentials.password === null)
-    {
-      return Observable.throw("Not going to login in myself");
-    }
-    else
-    {
-      return Observable.create(observer => {//store credentials to backend
-        observer.next(true);
-        observer.complete();
-      })
-    }
-  }
-
-  public getUserInfo(): User{
-    return this.currentUser;
-  }
-
-  public logout(){
-    return Observable.create(observer => {
-      this.currentUser = null;
-      observer.next(true);
-      observer.complete();
-    });
-  }
 
   constructor(public http: Http) {
     console.log('Hello AuthServiceProvider Provider');
   }
+
+  public login(credentials) {
+    if (credentials.email === null || credentials.password === null) {
+      return Observable.throw("Please insert credentials");
+    } else {
+      return Observable.create(observer => {//check backend
+
+
+        let access = (credentials.password === "pass" && credentials.email === "email");
+        this.currentUser = new User('Admin','Creator' ,'foodgapp@zipcode.com');
+        observer.next(access);
+        observer.complete();
+      });
+    }
+  }
+  public register(credentials)
+  {
+     if (credentials.email === null || credentials.password === null)
+     {
+       return Observable.throw("Please insert credentials");
+     }
+     else if(credentials.password !== credentials.password2)
+     {
+       return Observable.throw("Password doesn't match");
+     }
+     else
+     {//ready for backend storage
+       return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+       });
+     }
+   }
+
+   public getUserInfo() : User {
+    return this.currentUser;
+  }
+
+  public logout() {
+   return Observable.create(observer => {
+     this.currentUser = null;
+     observer.next(true);
+     observer.complete();
+   });
+ }
 
 }

@@ -31,7 +31,7 @@ import { HealthPartnerPage } from '../pages/health-partner/health-partner';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AgmCoreModule } from 'angular2-google-maps/core';
-import { AuthServiceProvider } from '../app/services/auth-service';
+import { AuthService } from '../app/services/auth-service';
 
 import { PickupService } from '../app/services/pickup.service';
 
@@ -39,7 +39,6 @@ import { PickupService } from '../app/services/pickup.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     MyApp,
-    HomePage,
     ListPage,
     PendingPage,
     WaitingPage,
@@ -66,7 +65,6 @@ import { PickupService } from '../app/services/pickup.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage,
     PendingPage,
     WaitingPage,
@@ -97,7 +95,7 @@ import { PickupService } from '../app/services/pickup.service';
 
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LaunchNavigator,
-    AuthServiceProvider
+    AuthService
   ]
 })
 export class AppModule { }

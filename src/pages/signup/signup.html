@@ -16,35 +16,34 @@
 <ion-content class ="login-content">
 
 <div class = "login-box">
-  <form>
+  <form (ngSubmit)="register()" #registerForm="ngForm">
     <ion-row>
       <ion-col>
         <ion-list inset>
           <ion-item>
-            <ion-input type="text" class="name" placeholder="First Name" name="fname" ng-required="true"></ion-input>
+            <ion-input type="text" class="name" placeholder="First Name" name="fname" required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input type="text" placeholder="Last Name" name="lname" ng-required="true"></ion-input>
+            <ion-input type="text" placeholder="Last Name" name="lname" required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input type="email" placeholder="Email" name="useremail" ng-model="useremail" ng-minlength ="5" ng-required="true"></ion-input>
+            <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input type="phone" placeholder="Phone" name="phone" ng-required="true"></ion-input>
+            <ion-input type="phone" placeholder="Phone" name="phone" required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input type="password" placeholder="Password" name="password" ng-required="true"></ion-input>
+            <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input type="password" placeholder="Retype Password" name="password2" ng-required="true"></ion-input>
+            <ion-input type="password" placeholder="Retype Password" name="password2" required></ion-input>
           </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
-
 <ion-row>
     <ion-col class="signup-col">
-      <button ion-button class="submit-btn" full type="submit" [navPush]="signupTypePage">Sign In</button>
+      <button ion-button class="submit-btn" type="submit" [disabled]="!registerForm.form.valid">Sign In</button>
       <button ion-button class="register-btn" block clear navPop>Existing Account</button>
     </ion-col>
 </ion-row>

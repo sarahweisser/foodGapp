@@ -23,19 +23,26 @@
     .toolbar-title-md{text-align: center;}
 
     .titleImg{    width: 4em;}
-    
+
     .login-content {
         background: #56CA96;
 
         .logo-row {
-          padding-top: 50px;
-          padding-bottom: 20px;
+          padding-top: 15px;
+          padding-bottom: 15px;
         }
 
         .login-box {
+          border-radius: 20px !important;
+          border: 2px solid #ffffff;
           background: #399F8B;
           padding: 20px 20px 0px 20px;
           margin-top: 30px;
+        }
+
+        .logo1{
+          border-radius: 10px !important;
+          border: 2px solid #ffffff;
         }
 
         h3{
@@ -71,15 +78,14 @@
            background: #51CFB1;
            border-radius: 30px !important;
            border: 1px solid #ffffff;
+           width: 40%;
          }
 
          .register-btn {
            color: #ffffff;
-           background-color: #399f8b;;
+               background: none;
            font-size: 0.8em;
          }
       }
-
-
   }
 }

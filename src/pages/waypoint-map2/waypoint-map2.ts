@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MapComponent } from '../../components/map/map.component';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
-
+var google:any;
 /**
  * Generated class for the WaypointMap2Page page.
  *
@@ -16,10 +16,12 @@ import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-na
   templateUrl: 'waypoint-map2.html',
 })
 export class WaypointMap2Page {
+
+
   pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
               public mapComponent: MapComponent,
               public launchNavigator: LaunchNavigator) {
   }
@@ -43,11 +45,11 @@ export class WaypointMap2Page {
 
       })
     }
-  
+
   }
 
   ionViewDidLoad() {
-    
+
   }
 
 }

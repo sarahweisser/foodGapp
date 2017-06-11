@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostPage } from '../post/post';
 import { VolStartScreenPage } from '../vol-start-screen/vol-start-screen';
 import { SetAvailabilityPage } from '../set-availability/set-availability';
+import { AuthService } from '../../app/services/auth-service';
 
 /**
  * Generated class for the SignupTypePage page.
@@ -16,12 +17,18 @@ import { SetAvailabilityPage } from '../set-availability/set-availability';
   templateUrl: 'signup-type.html',
 })
 export class SignupTypePage {
+  username = '';
+  email = '';
+  constructor(private navCtrl: NavController, private auth: AuthService) {
+    let info = this.auth.getUserInfo();
+    this.username = info['name'];
+    this.email = info['email'];
+  }
 
-  postPage = PostPage;
-  volStart = VolStartScreenPage;
-  setAvailabilityPage = SetAvailabilityPage;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public logout() {
+    this.auth.logout().subscribe(succ => {
+      this.navCtrl.setRoot('HomePage')
+    });
   }
 
   ionViewDidLoad() {

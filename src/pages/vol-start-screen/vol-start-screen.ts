@@ -11,11 +11,11 @@ import { DataService } from '../../app/services/data.service';
 import { PickupService } from '../../app/services/pickup.service';
 
 
-export class TestPage {
-  constructor(data: PickupService) {
-    data.retrieveData()
-  }
-}
+// export class TestPage {
+//   constructor(data: PickupService) {
+//     data.retrieveData()
+//   }
+// }
 
 
 declare var google;
@@ -44,23 +44,20 @@ export class VolStartScreenPage {
     public popoverCtrl: PopoverController,
     public events: Events,
     public data: DataService,
-    public pickupService:PickupService,
+    public pickupService: PickupService,
     public loadingCtrl: LoadingController,
     private deeplinks: Deeplinks) {
     this.infoWindows = [];
   }
 
-loadPeople(){
-  this.pickupService.retrieveData()
-  .then(data => {
-    this.info = data;
-  });
-}
+
+
 
   ionViewWillEnter() {
     this.loader = this.getLoader();
     this.loader.present();
     this.displayGoogleMap();
+    this.loadPeople();
 
 
   }
@@ -76,7 +73,7 @@ loadPeople(){
   displayGoogleMap() {
     this.geolocation.getCurrentPosition().then(position => {
       this.loader.dismiss();
-      let zipCode = new google.maps.LatLng(39.749391, -75.561390);
+      let zipCode = new google.maps.LatLng( 39.746323, -75.563192);
       // let current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
         center: zipCode,
@@ -105,7 +102,7 @@ loadPeople(){
   myMarker(position) {
     //var position = new google.maps.LatLng(marker.latitude, marker.longitude);
     var image = {
-      icon: new google.maps.MarkerImage('assets/img/ball2.gif'),
+      icon: new google.maps.MarkerImage('assets/img/ball4.gif'),
       size: new google.maps.Size(10, 8),
 
     };
@@ -128,6 +125,17 @@ loadPeople(){
 
   }
 
+  loadPeople() {
+    // this.pickupService.retrieveData((data) => {
+    //   this.addMarkersToMap(data);
+    // });
+
+    // this.pickupService.retrieveData(this.data)
+    // .then(data => {
+    //   this.info = data;
+    // });
+  }
+
 
 
   markerInfo(marker) {
@@ -138,7 +146,7 @@ loadPeople(){
       popover.present({
 
       });
-      popover.dismiss
+      
     });
 
   }
@@ -146,21 +154,34 @@ loadPeople(){
 
 
   addMarkersToMap(markers) {
-    for (let marker of markers) {
 
-      var position = new google.maps.LatLng(marker.latitude, marker.longitude);
+    for (let marker of markers) {
+      console.log(marker);
+      console.log();
+      // var position2 = new google.maps.LatLng(marker.latitude, marker.longitude);
+      var position = new google.maps.LatLng(marker.donor.donorLocation.lat, marker.donor.donorLocation.lng);
+    console.log(position)
       var restaurantMarkerClick = new google.maps.Marker({
         position: position,
-        title: marker.name,
+        title: marker.donor.donorName,
         quantity: marker.quantity,
-        perishable: marker.perishable,
+        perishable: marker.isPerishable,
         latitude: marker.latitude,
+        pickupId:marker.donor.pickupid,
         longitude: marker.longitude,
         animation: google.maps.Animation.DROP
       });
+
+      console.log();
       restaurantMarkerClick.setMap(this.map);
       this.markerInfo(restaurantMarkerClick);
+
+
     }
   }
+
+
+
+
 
 }

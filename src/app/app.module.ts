@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { Push, PushObject, PushOptions } from "@ionic-native/push";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -35,7 +36,7 @@ import { AuthServiceProvider } from '../app/services/auth-service';
 import { PickupService } from '../app/services/pickup.service';
 
 @NgModule({
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     MyApp,
     HomePage,
@@ -95,7 +96,7 @@ import { PickupService } from '../app/services/pickup.service';
     PickupService,
 
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    LaunchNavigator, 
+    LaunchNavigator,
     AuthServiceProvider
   ]
 })

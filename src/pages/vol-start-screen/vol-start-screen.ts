@@ -11,13 +11,6 @@ import { DataService } from '../../app/services/data.service';
 import { PickupService } from '../../app/services/pickup.service';
 
 
-// export class TestPage {
-//   constructor(data: PickupService) {
-//     data.retrieveData()
-//   }
-// }
-
-
 declare var google;
 
 

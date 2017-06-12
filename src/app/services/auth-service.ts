@@ -53,6 +53,8 @@ export class AuthService {
                 observer.complete();
               }
             }
+            observer.next(false);
+            observer.complete();
           });
         });
       }

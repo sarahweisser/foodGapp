@@ -14,3 +14,25 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+
+.toolbar-title{
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+    display: none!important;
+}
+
+.scroll-content{
+        background: #438923;
+}
+
+.toolbar-background {
+
+    background: rgba(67, 137, 35, 0.73);
+}

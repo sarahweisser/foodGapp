@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -15,35 +16,57 @@ export class User {
   email: string;
   phone: string;
 
-  constructor(fname: string,lname: string, email: string) {
+  constructor(fname: string, lname: string, email: string, phone: string) {
     this.fname = fname;
-    this.lname = lname;
+    this.phone = phone;
     this.email = email;
+    this.lname = lname;
   }
 }
 
 @Injectable()
 export class AuthService {
   currentUser: User;
+  data: any;
 
   constructor(public http: Http) {
     console.log('Hello AuthServiceProvider Provider');
   }
 
+  public returnUsers(credentials)
+  {
+    this.http.get('../../assets/data/users.json')
+    .map((response) => response.json())
+    .subscribe((data) => {
+      for(let user of data)
+      {
+        if(credentials.email === user.email && credentials.password == user.password)
+        console.log(user.fname);
+        return user;
+      }
+
+    },(err)=>{
+      console.log(err);
+    });
+  }
+
   public login(credentials) {
-    if (credentials.email === null || credentials.password === null) {
+    if (credentials.email === null || credentials.password === null)
+    {
       return Observable.throw("Please insert credentials");
     } else {
-      return Observable.create(observer => {//check backend
 
+      return Observable.create(observer => {
+        console.log(this.returnUsers(credentials));
 
-        let access = (credentials.password === "pass" && credentials.email === "email");
-        this.currentUser = new User('Admin','Creator' ,'foodgapp@zipcode.com');
-        observer.next(access);
+          observer.next(false);
         observer.complete();
       });
     }
   }
+
+
+
   public register(credentials)
   {
      if (credentials.email === null || credentials.password === null)

@@ -23,7 +23,7 @@ export class MyApp {
 
   rootPage: any = 'HomePage';
 
-  //rootPage: any = SignupTypePage;
+  // rootPage: any = SignupTypePage;
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {

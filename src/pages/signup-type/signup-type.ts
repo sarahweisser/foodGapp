@@ -35,7 +35,7 @@ export class SignupTypePage {
 
   public logout() {
     this.auth.logout().subscribe(succ => {
-      this.navCtrl.setRoot('HomePage')
+      this.navCtrl.setRoot('HomePage');
     });
   }
 

@@ -26,20 +26,14 @@
         .scroll {
             height: 100%
         }
-        #map {
-            width: 100%;
-            height: 45%;
-            margin-bottom: 46px;
-        }
+     
         ion-card {
             max-height: 200px;
             overflow: scroll;
             position: absolute;
             z-index: 1;
         }
-        .titleImg {
-            width: 4em;
-        }
+    
         .progressContent {
             //  background: #438923;
             background: #080808;
@@ -69,6 +63,12 @@
         }
         .toolbar-title {
             padding-left: 0 !important;
+        }
+
+         .titleImg {
+            width: 4em;
+            margin-top: -11px;
+            
         }
     }
 }

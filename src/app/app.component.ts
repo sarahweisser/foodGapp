@@ -24,7 +24,7 @@ export class MyApp {
   rootPage: any = VolStartScreenPage;
 
 
-  //rootPage: any = SignupTypePage;
+  // rootPage: any = ProgressPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {

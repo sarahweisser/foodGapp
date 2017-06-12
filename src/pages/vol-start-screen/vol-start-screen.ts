@@ -46,11 +46,11 @@ export class VolStartScreenPage {
 
 
 
-  ionViewWillEnter() {
+  ionViewDidLoad() {
     this.loader = this.getLoader();
     this.loader.present();
     this.displayGoogleMap();
-    this.loadPeople();
+    //this.loadPeople();
 
 
   }
@@ -80,7 +80,6 @@ export class VolStartScreenPage {
 
       const markers = function () {
         this.getMarkers();
-        // this.loader.dismiss();
       }
       setTimeout(markers.bind(this), 1000);
 

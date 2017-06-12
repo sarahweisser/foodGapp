@@ -38,12 +38,12 @@
             z-index: 1;
         }
         .titleImg {
-            width: 4em;
+            
         }
         .progressContent {
             //  background: #438923;
             //background: #080808;
-            background: url("../../assets/img/pic6.jpg");
+            background: url("/assets/img/pic5.jpg");
             text-align: center;
             position: relative;
             /* Full height */
@@ -64,12 +64,13 @@
         }
         .scroll-content {
             border: 1.6px solid #d29d10;
+            background:none;
         }
         #mapSpacing {
             padding-top: 6%;
         }
         .scroll-content {
-                text-shadow: 1px 0 black, 0 0px black, 0px 0 white, 0 0px black;
+                // text-shadow: 1px 0 black, 0 0px black, 0px 0 white, 0 0px black;
             padding: 0;
         }
         .thanks {
@@ -79,6 +80,7 @@
             color: white;
             text-align: center;
             font-size: 29px;
+                background: rgba(244, 244, 244, 0.08);
         }
         .donorProgress {
             position: fixed;
@@ -96,8 +98,9 @@
             border: none;
         }
         .titleImg {
+            width: 4em;
             margin-top: -11px;
-            margin-left: -43px;
+            
         }
     }
 }

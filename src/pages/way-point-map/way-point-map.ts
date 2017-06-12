@@ -22,17 +22,14 @@ export class WayPointMapPage {
   buttonText: string = 'Accept';
   buttonHandler: Function = this.confirm;
 
-  // currentLocation: Object = new google.maps.LatLng(39.7472871, -75.54704149999999);
-  // pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
-  // dropOffLocation: Object = new google.maps.LatLng(39.77, -75.5570417);
+  currentLocation: Object = new google.maps.LatLng(39.7472871, -75.54704149999999);
+  pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
+  dropOffLocation: Object = new google.maps.LatLng(39.77, -75.5570417);
   pickup: any;
   // currentLocation: any;
   // pickupLocation: any;
   // dropOffLocation: any;
-  currentLocation: Object = new google.maps.LatLng(39.7472871, -75.54704149999999);
-  pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
-  //dropOffLocation: Object = new google.maps.LatLng(39.77, -75.5570417);
-  dropOffLocation = this.navParams.get('location');
+
 
   quantity: any;
   perishable: any;
@@ -59,7 +56,8 @@ export class WayPointMapPage {
     this.quantity = this.navParams.get('quantity');
     this.perishable = this.navParams.get('perishable');
     this.phone = this.navParams.get('phone');
-    this.pickupLocation = this.navParams.get('location');
+    //this.pickupLocation = this.navParams.get('location');
+
     //this.dropOffLocation = new google.maps.LatLng(this.navParams.get('location'));
     console.log("THIS PICKUPLOCATION")
     console.log(typeof this.pickupLocation)
@@ -81,8 +79,8 @@ export class WayPointMapPage {
 
   confirm() {
     // navigate from current location to pickup
-    this.navCtrl.push(WaypointMap2Page)
     this.navigate('Philadelphia, PA', 'Baltimore, MD');
+    this.navCtrl.push(WaypointMap2Page);
      
   }
 
@@ -103,8 +101,6 @@ export class WayPointMapPage {
   // }
 
   ionViewDidLoad() {
-
-    console.log(this.navParams.data.position.toString());
     
     navigator.geolocation.getCurrentPosition((position) => {
       this.currentLocation = new google.maps.LatLng(

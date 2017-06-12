@@ -4,7 +4,8 @@ import { MapComponent } from '../../components/map/map.component';
 import { VolStartScreenPage } from '../../pages/vol-start-screen/vol-start-screen';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
-declare var google: any;
+declare var google:any;
+
 /**
  * Generated class for the WaypointMap2Page page.
  *

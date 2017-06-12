@@ -39,6 +39,7 @@ import { PickupService } from '../app/services/pickup.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     MyApp,
+    HomePage,
     ListPage,
     PendingPage,
     WaitingPage,
@@ -66,6 +67,7 @@ import { PickupService } from '../app/services/pickup.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HomePage,
     ListPage,
     PendingPage,
     WaitingPage,

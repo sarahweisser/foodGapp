@@ -20,10 +20,11 @@
     <div [hidden]="!confirmed" #directionsPanel></div>
   </ion-card-content>
 <div [hidden]="confirmed" id="pickupDetails">
-  <p> {{ locationName }} </p>
-  <p>Payload:{{ payload }} </p>
-  <p>Pickup Address: {{ address }}</p>
-  <p>Pickup Phone: {{phone }}</p>
+  <p> {{ location }} </p>
+  <p>Payload: {{ quantity }} </p>
+  <p>Perishable? {{ perishable }} </p>
+  <!--<p>Pickup Location: {{ (pickup | async) ?.destination.destinationName }}</p>-->
+  <p>Pickup Phone: {{ phone }}</p>
 </div>
 
   <button ion-button (click)='confirm()'>{{ buttonText }}</button>

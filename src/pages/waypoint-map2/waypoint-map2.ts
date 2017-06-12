@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MapComponent } from '../../components/map/map.component';
+import { VolStartScreenPage } from '../../pages/vol-start-screen/vol-start-screen';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
-var google:any;
+declare var google: any;
 /**
  * Generated class for the WaypointMap2Page page.
  *
@@ -19,6 +20,8 @@ export class WaypointMap2Page {
 
 
   pickupLocation: Object = new google.maps.LatLng(39.7472871, -75.4);
+  buttonText: string = 'Pickup Complete?'
+  buttonHandler = this.pickupConfirmed;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -27,7 +30,13 @@ export class WaypointMap2Page {
   }
 
   pickupConfirmed() {
+    this.buttonText = "DropOff Complete?"
+    this.buttonHandler = this.dropOffComplete
+    this.continueNavigating();
+  }
 
+  dropOffComplete() {
+    this.navCtrl.push(VolStartScreenPage);
   }
 
   continueNavigating() {

@@ -33,37 +33,33 @@ export class AuthService {
     console.log('Hello AuthServiceProvider Provider');
   }
 
-  public checkAcess(credentials)
+  public returnUsers(credentials)
   {
-    let bool = false;
     this.http.get('../../assets/data/users.json')
     .map((response) => response.json())
     .subscribe((data) => {
       for(let user of data)
       {
-        if(user.email === credentials.email && user.password === credentials.password)
-        {
-            console.log(user.fname);
-            this.currentUser = new User(user.fname, user.lname, user.email, user.phone);
-            bool = true;
-        }
+        if(credentials.email === user.email && credentials.password == user.password)
+        console.log(user.fname);
+        return user;
       }
+
     },(err)=>{
       console.log(err);
     });
-    return bool; 
   }
 
   public login(credentials) {
-
     if (credentials.email === null || credentials.password === null)
     {
       return Observable.throw("Please insert credentials");
     } else {
+
       return Observable.create(observer => {
-        let permission = this.checkAcess(credentials);
-        let access = (permission);
-        observer.next(access);
+        console.log(this.returnUsers(credentials));
+
+          observer.next(false);
         observer.complete();
       });
     }

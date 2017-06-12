@@ -54,5 +54,13 @@
     "password": "radiojulius",
     "phone": 2675555555,
     "email": "foodGapp@zipcode.com"
+  },
+  {
+    "id": 7,
+    "fname": "Admin",
+    "lname": "FoodBank",
+    "password": "pass",
+    "phone": 2675555555,
+    "email": "email"
   }
 ]

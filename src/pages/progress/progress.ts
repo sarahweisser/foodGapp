@@ -41,7 +41,7 @@ export class ProgressPage {
     public navParams: NavParams,
     private launchNavigator: LaunchNavigator) {
       console.log(navParams.data);
-    //  setTimeout(function(){navCtrl.push(CompletePage)},5000);
+     setTimeout(function(){navCtrl.push(CompletePage)},15000);
   }
 
 
@@ -72,7 +72,7 @@ export class ProgressPage {
 
     let mapOptions = {
       center: LatLng,
-      zoom: 20,
+      zoom: 14,
       disableDefaultUI: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }

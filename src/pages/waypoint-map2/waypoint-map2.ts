@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MapComponent } from '../../components/map/map.component';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
-var google:any;
+declare var google:any;
 /**
  * Generated class for the WaypointMap2Page page.
  *

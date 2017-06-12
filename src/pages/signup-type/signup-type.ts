@@ -19,10 +19,11 @@ import { AuthService } from '../../app/services/auth-service';
 export class SignupTypePage {
   username = '';
   email = '';
+  name = 'sdaf';
   constructor(private navCtrl: NavController, private auth: AuthService) {
     let info = this.auth.getUserInfo();
-    this.username = info['name'];
     this.email = info['email'];
+    this.name = info['fname'];
   }
 
   public logout() {

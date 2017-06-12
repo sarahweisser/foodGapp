@@ -39,6 +39,7 @@ import { PickupService } from '../app/services/pickup.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     MyApp,
+    HomePage,
     ListPage,
     PendingPage,
     WaitingPage,
@@ -55,7 +56,8 @@ import { PickupService } from '../app/services/pickup.service';
     MapComponent,
     SetAvailabilityPage,
     HealthPartnerPage,
-    SignupTypePage
+    SignupTypePage,
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,7 @@ import { PickupService } from '../app/services/pickup.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HomePage,
     ListPage,
     PendingPage,
     WaitingPage,
@@ -80,7 +83,8 @@ import { PickupService } from '../app/services/pickup.service';
     SignupTypePage,
     SetAvailabilityPage,
     HealthPartnerPage,
-    SignupTypePage
+    SignupTypePage,
+    HomePage
 
   ],
   providers: [

@@ -56,8 +56,8 @@ export class WayPointMapPage {
     this.quantity = this.navParams.get('quantity');
     this.perishable = this.navParams.get('perishable');
     this.phone = this.navParams.get('phone');
-    this.pickupLocation = this.navParams.get('location');
-    this.dropOffLocation = new google.maps.LatLng(this.navParams.get('location'));
+    //this.pickupLocation = this.navParams.get('location');
+    //this.dropOffLocation = new google.maps.LatLng(this.navParams.get('location'));
     console.log("THIS PICKUPLOCATION")
     console.log(typeof this.pickupLocation)
     

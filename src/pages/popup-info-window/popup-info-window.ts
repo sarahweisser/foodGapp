@@ -32,7 +32,7 @@ export class PopupInfoWindowPage {
     this.title = navParams.data.marker.title;
     this.quantity = navParams.data.marker.quantity;
     this.perishable = navParams.data.marker.perishable;
-    this.phone = navParams.data.marker.donorPhone;
+    this.phone = navParams.data.marker.phone;
     this.location = this.navParams.get('position');
 
   }

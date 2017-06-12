@@ -56,7 +56,8 @@ import { PickupService } from '../app/services/pickup.service';
     MapComponent,
     SetAvailabilityPage,
     HealthPartnerPage,
-    SignupTypePage
+    SignupTypePage,
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -82,7 +83,8 @@ import { PickupService } from '../app/services/pickup.service';
     SignupTypePage,
     SetAvailabilityPage,
     HealthPartnerPage,
-    SignupTypePage
+    SignupTypePage,
+    HomePage
 
   ],
   providers: [

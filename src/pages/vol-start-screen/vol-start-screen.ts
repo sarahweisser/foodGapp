@@ -46,11 +46,11 @@ export class VolStartScreenPage {
 
 
 
-  ionViewWillEnter() {
+  ionViewDidLoad() {
     this.loader = this.getLoader();
     this.loader.present();
     this.displayGoogleMap();
-    this.loadPeople();
+    //this.loadPeople();
 
 
   }
@@ -65,7 +65,7 @@ export class VolStartScreenPage {
 
   displayGoogleMap() {
     this.geolocation.getCurrentPosition().then(position => {
-      this.loader.dismiss();
+      //this.loader.dismiss();
       let zipCode = new google.maps.LatLng( 39.746323, -75.563192);
       // let current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {

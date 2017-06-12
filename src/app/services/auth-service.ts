@@ -33,22 +33,6 @@ export class AuthService {
     console.log('Hello AuthServiceProvider Provider');
   }
 
-  public returnUsers(credentials)
-  {
-    this.http.get('../../assets/data/users.json')
-    .map((response) => response.json())
-    .subscribe((data) => {
-      for(let user of data)
-      {
-        if(credentials.email === user.email && credentials.password == user.password)
-        console.log(user.fname);
-        return user;
-      }
-
-    },(err)=>{
-      console.log(err);
-    });
-  }
 
   public login(credentials) {
     if (credentials.email === null || credentials.password === null)
@@ -57,13 +41,22 @@ export class AuthService {
     } else {
 
       return Observable.create(observer => {
-        console.log(this.returnUsers(credentials));
-
-          observer.next(false);
-        observer.complete();
-      });
+        this.http.get('../../assets/data/users.json')
+        .map((response) => response.json())
+        .subscribe((data) => {
+            for(let user of data)
+            {
+              if(credentials.password === user.password && credentials.email === user.email)
+              {
+                this.currentUser = new User(user.fname, user.lname, user.email, user.phone);
+                observer.next(true);
+                observer.complete();
+              }
+            }
+          });
+        });
+      }
     }
-  }
 
 
 

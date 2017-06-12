@@ -46,5 +46,13 @@
     "password": "NYStateOfMind",
     "phone": 2675555555,
     "email": "none.of.ya.business@gmail.com"
+  },
+  {
+    "id": 6,
+    "fname": "Admin",
+    "lname": "FoodBank",
+    "password": "radiojulius",
+    "phone": 2675555555,
+    "email": "foodGapp@zipcode.com"
   }
 ]

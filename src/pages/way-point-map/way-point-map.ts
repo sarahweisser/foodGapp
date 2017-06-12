@@ -79,8 +79,8 @@ export class WayPointMapPage {
 
   confirm() {
     // navigate from current location to pickup
-    this.navigate('Philadelphia, PA', 'Baltimore, MD');
     this.navCtrl.push(WaypointMap2Page);
+    this.navigate('Philadelphia, PA', 'Baltimore, MD');
      
   }
 

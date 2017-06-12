@@ -52,7 +52,8 @@ export class PopupInfoWindowPage {
       quantity: this.quantity,
       perishable: this.perishable,
       phone: this.phone,
-      location: this.location
+      location: this.location,
+      marker:this.marker
     });
 
       this.viewCtrl.dismiss();

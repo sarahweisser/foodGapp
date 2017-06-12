@@ -4,6 +4,9 @@ import { PostPage } from '../post/post';
 import { VolStartScreenPage } from '../vol-start-screen/vol-start-screen';
 import { SetAvailabilityPage } from '../set-availability/set-availability';
 import { AuthService } from '../../app/services/auth-service';
+import { MyApp } from '../../app/app.component';
+import { HomePage } from '../home/home';
+import { SignupPage } from '../signup/signup';
 
 /**
  * Generated class for the SignupTypePage page.
@@ -16,13 +19,18 @@ import { AuthService } from '../../app/services/auth-service';
   selector: 'page-signup-type',
   templateUrl: 'signup-type.html',
 })
+
+
 export class SignupTypePage {
-  username = '';
-  email = '';
+  email = 'none';
+  name = 'guest';
+
+
   constructor(private navCtrl: NavController, private auth: AuthService) {
     let info = this.auth.getUserInfo();
-    this.username = info['name'];
     this.email = info['email'];
+    this.name = info['fname'];
+
   }
 
   public logout() {

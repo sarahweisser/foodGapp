@@ -82,8 +82,6 @@
                 "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
                 "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
             },
-            "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
-            "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map",
             "ionic-plugin-deeplinks": {
                 "URL_SCHEME": "myapp",
                 "DEEPLINK_SCHEME": "https",
